@@ -1,0 +1,1 @@
+import{_ as t,R as s,r as n,o as r,c as a,b as c,F as _,d as e}from"./index-883313b1.js";const l={components:{RouterView:s}},d=e("div",null,"我事後台頁面",-1),i=e("hr",null,null,-1);function p(u,m,f,V,h,w){const o=n("RouterView");return r(),a(_,null,[d,i,c(o)],64)}const $=t(l,[["render",p]]);export{$ as default};
