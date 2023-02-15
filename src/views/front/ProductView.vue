@@ -1,4 +1,5 @@
 <template>
+  <VueLoading v-model:active="isLoading"></VueLoading>
   <div>
     單一產品頁面
     <h2>{{ product.title }}</h2>
@@ -12,6 +13,7 @@ const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   data() {
     return {
+      isLoading: false,
       product: {},
     };
   },
@@ -36,6 +38,10 @@ export default {
   },
   mounted() {
     this.gteProduct();
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
   },
 };
 </script>

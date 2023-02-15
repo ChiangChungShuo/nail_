@@ -27,6 +27,7 @@
 
 <script>
 import { RouterLink } from 'vue-router';
+import Swal from 'sweetalert2';
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 
 export default {
@@ -60,7 +61,14 @@ export default {
         .post(`${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`, { data })
         .then((res) => {
           console.log(res);
-          alert(res.data.message);
+          // alert(res.data.message);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '成功加入購物車',
+            showConfirmButton: true,
+            confirmButtonText: '確認',
+          });
           // this.products = res.data.products;
         })
         .catch((err) => {
@@ -73,7 +81,7 @@ export default {
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
-    }, 1500);
+    }, 1000);
   },
 };
 </script>

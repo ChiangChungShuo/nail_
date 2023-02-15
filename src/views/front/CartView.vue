@@ -78,7 +78,7 @@
 
 <script>
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
-
+import Swal from 'sweetalert2';
 export default {
   data() {
     return {
@@ -130,7 +130,13 @@ export default {
         .then((res) => {
           // console.log("更新購物車", res.data);
           this.getCarts();
-          alert(res.data.message);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '產品數量已更新',
+            showConfirmButton: false,
+            timer: 1500,
+          });
           this.loadingItem = '';
         })
         .catch((err) => {
@@ -145,7 +151,13 @@ export default {
         .then((res) => {
           // console.log("刪除購物車", res.data);
           this.getCarts();
-          alert(res.data.message);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '成功刪除',
+            showConfirmButton: true,
+            confirmButtonText: '確認',
+          });
           this.loadingItem = '';
         })
         .catch((err) => {
@@ -153,17 +165,31 @@ export default {
         });
     },
     deleteAll() {
-      let deleteConfirm = confirm('確定清空購物車？');
+      let deleteConfirm = Swal.fire({
+        title: '確定要清空購物車?',
+        showDenyButton: true,
+        confirmButtonText: '確認清空',
+        denyButtonText: `取消`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.$https.Swal.fire('Saved!', '', 'success');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      });
       if (deleteConfirm) {
-        this.$http
-          .delete(`${VITE_APP_URL}/api/${VITE_APP_PATH}/carts`)
-          .then((res) => {
+        this.$https.delete`${VITE_APP_URL}/api/${VITE_APP_PATH}/carts`
+          .then(() => {
             this.getCarts();
-            alert('購物車已全部刪除');
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: '購物車已全部刪除',
+              showConfirmButton: true,
+              confirmButtonText: '確認',
+            });
           })
           .catch((err) => alert(err.response.data.message));
-      } else {
-        return;
       }
     },
     changeLoading(modalLoading) {
@@ -201,7 +227,7 @@ export default {
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
-    }, 1500);
+    }, 1000);
   },
 };
 </script>
