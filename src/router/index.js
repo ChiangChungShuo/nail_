@@ -27,11 +27,15 @@ const router = createRouter({
           path: "cart",
           component: () => import("../views/front/CartView.vue"),
         },
+        {
+          path: "login",
+          component: () => import("../views/front/LoginView.vue"),
+        },
       ],
     },
     {
       path: "/admin", //動態路由
-      component: () => import("../views/admin/DashboardView.vue"),
+      component: () => import("../views/DashboardView.vue"),
       // 子路由
       children: [
         {
@@ -40,7 +44,7 @@ const router = createRouter({
         },
         {
           path: "orders", //動態路由
-          component: () => import("../views/admin/OrderView.vue"),
+          component: () => import("../views/admin/AdminOrder.vue"),
         },
       ],
     },

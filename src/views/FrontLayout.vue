@@ -4,6 +4,8 @@
   <RouterLink to="/about">關於我</RouterLink> ｜
   <RouterLink to="/products">商品列表</RouterLink>｜
   <RouterLink to="/cart">購物車</RouterLink> ｜
+  <RouterLink to="/admin">後台</RouterLink> ｜
+  <RouterLink to="/login">登入後台</RouterLink> ｜
   <hr />
   <RouterView></RouterView>
 </template>

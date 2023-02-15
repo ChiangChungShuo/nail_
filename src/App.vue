@@ -38,13 +38,7 @@ export default {
   <div class="container">
     <header>
       <VueLoading v-model:active="isLoading"></VueLoading>
-      <nav>
-        <!-- <RouterLink to="/">首頁</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/products">Products</RouterLink> |
-        <RouterLink to="/admin/products">後台產品頁面</RouterLink>
-        <RouterLink to="/admin/orders">後台產品頁面</RouterLink> -->
-      </nav>
+      <nav></nav>
     </header>
     <RouterView />
   </div>

@@ -1,73 +1,84 @@
 <template>
-  <div>購物車</div>
-  <div class="text-end">
-    <button class="btn btn-outline-danger" type="button" @click="deleteAll()">
-      清空購物車
-    </button>
+  <VueLoading v-model:active="isLoading"></VueLoading>
+  <div class="text-center" v-if="!cartStatus">
+    <p>購物車內還沒有商品，快去選購吧！</p>
   </div>
-  <table class="table align-middle">
-    <thead>
-      <tr>
-        <th></th>
-        <th>品名</th>
-        <th>圖片</th>
-        <th style="width: 150px">數量/單位</th>
-        <th class="text-end">單價</th>
-      </tr>
-    </thead>
-    <tbody>
-      <template v-if="cart.carts">
-        <tr v-for="item in cart.carts" :key="item.id">
-          <td>
-            <button
-              type="button"
-              class="btn btn-outline-danger btn-sm"
-              :disabled="item.id === loadingItem"
-              @click="delCartItem(item)"
-            >
-              <i class="fas fa-spinner fa-pulse"></i>
-              x
-            </button>
-          </td>
-          <td>{{ item.product.title }}</td>
-          <td><img :src="item.product.imageUrl" width="50" alt="" /></td>
-          <td>
-            <div class="input-group input-group-sm">
-              <select
-                name=""
-                id=""
-                class="form-select"
-                v-model="item.qty"
-                :disabled="item.id === loadingItem"
-                @change="updatedCartItem(item)"
-              >
-                <option :value="i" v-for="i in 20" :key="`i+'12345'`">
-                  {{ i }}
-                </option>
-              </select>
-            </div>
-          </td>
-          <td class="text-end">{{ item.total }}</td>
+  <template v-else>
+    <div class="text-end">
+      <button
+        class="btn btn-outline-danger"
+        type="button"
+        :disabled="!cartStatus"
+        @click="deleteAll()"
+      >
+        清空購物車
+      </button>
+    </div>
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th></th>
+          <th>品名</th>
+          <th>圖片</th>
+          <th style="width: 150px">數量/單位</th>
+          <th class="text-end">單價</th>
+          <th class="text-end">小計</th>
         </tr>
-      </template>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="4" class="text-end">總計</td>
-        <td class="text-end">{{ cart.total }}</td>
-      </tr>
-      <tr>
-        <td colspan="4" class="text-end text-success">折扣價</td>
-        <td class="text-end text-success">{{ cart.final_total }}</td>
-      </tr>
-    </tfoot>
-  </table>
+      </thead>
+      <tbody>
+        <template v-if="cart.carts">
+          <tr v-for="item in cart.carts" :key="item.id">
+            <td>
+              <button
+                type="button"
+                class="btn btn-outline-danger btn-sm"
+                :disabled="item.id === loadingItem"
+                @click="delCartItem(item)"
+              >
+                <i class="fas fa-spinner fa-pulse"></i>
+                x
+              </button>
+            </td>
+            <td>{{ item.product.title }}</td>
+            <td><img :src="item.product.imageUrl" width="50" alt="" /></td>
+            <td>
+              <div class="input-group input-group-sm">
+                <select
+                  name=""
+                  id=""
+                  class="form-select"
+                  v-model="item.qty"
+                  :disabled="item.id === loadingItem"
+                  @change="updatedCartItem(item)"
+                >
+                  <option :value="i" v-for="i in 20" :key="`i+'12345'`">
+                    {{ i }}
+                  </option>
+                </select>
+              </div>
+            </td>
+            <td class="text-end">
+              {{ item.product.price }}
+            </td>
+            <td class="text-end">{{ item.total }}</td>
+          </tr>
+        </template>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5" class="text-end">總計</td>
+          <td class="text-end">{{ cart.total }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </template>
 </template>
 
 
 
 <script>
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
+
 export default {
   data() {
     return {
@@ -75,12 +86,13 @@ export default {
       productId: '',
       //購物車
       cart: {},
+      cartStatus: false,
       isLoading: false,
       //操作完成才能在操作下一個動作
       loadingItem: '', //存id
       user: {
-        name: '',
         email: '',
+        name: '',
         tel: '',
         address: '',
       },
@@ -95,6 +107,11 @@ export default {
         .then((res) => {
           // console.log("購物車", res.data);
           this.cart = res.data.data;
+          if (this.cart.carts.length === 0) {
+            this.cartStatus = false;
+          } else {
+            this.cartStatus = true;
+          }
         })
         .catch((err) => {
           console.error(err);
@@ -136,19 +153,43 @@ export default {
         });
     },
     deleteAll() {
-      this.$http
-        .delete(`${VITE_APP_URL}/api/${VITE_APP_PATH}/carts`)
-        .then((res) => {
-          this.getCarts();
-          alert('購物車已全部刪除');
-        })
-        .catch((err) => alert(err.response.data.message));
+      let deleteConfirm = confirm('確定清空購物車？');
+      if (deleteConfirm) {
+        this.$http
+          .delete(`${VITE_APP_URL}/api/${VITE_APP_PATH}/carts`)
+          .then((res) => {
+            this.getCarts();
+            alert('購物車已全部刪除');
+          })
+          .catch((err) => alert(err.response.data.message));
+      } else {
+        return;
+      }
     },
     changeLoading(modalLoading) {
       this.loadingItem = modalLoading;
     },
+    //送出訂單
     onSubmit() {
-      console.log(this.user);
+      const data = {
+        user: this.user,
+        message: this.message,
+      };
+      if (this.cart.carts.length === 0) {
+        alert('購物車內還沒有商品唷～');
+        return;
+      }
+      this.$http
+        .post(`${VITE_APP_URL}/api/${VITE_APP_PATH}/order`, { data })
+        .then((res) => {
+          alert(res.data.message);
+          this.$refs.form.resetForm();
+          this.getCarts();
+          this.message = '';
+        })
+        .catch((err) => {
+          alert(err.response.data.message);
+        });
     },
     isPhone(value) {
       const phoneNumber = /^(09)[0-9]{8}$/;
@@ -157,6 +198,10 @@ export default {
   },
   mounted() {
     this.getCarts();
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1500);
   },
 };
 </script>
