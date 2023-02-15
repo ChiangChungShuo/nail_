@@ -79,6 +79,8 @@
 <script>
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 import Swal from 'sweetalert2';
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -165,32 +167,30 @@ export default {
         });
     },
     deleteAll() {
-      let deleteConfirm = Swal.fire({
+      Swal.fire({
         title: '確定要清空購物車?',
         showDenyButton: true,
         confirmButtonText: '確認清空',
-        denyButtonText: `取消`,
+        denyButtonText: '取消',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.$https.Swal.fire('Saved!', '', 'success');
+          axios
+            .delete(`${VITE_APP_URL}/api/${VITE_APP_PATH}/carts`)
+            .then(() => {
+              this.getCarts();
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: '購物車已全部刪除',
+                showConfirmButton: true,
+                confirmButtonText: '確認',
+              });
+            })
+            .catch((err) => alert(err.response.data.message));
         } else if (result.isDenied) {
-          Swal.fire('Changes are not saved', '', 'info');
+          Swal.fire('留著好了', '', 'info');
         }
       });
-      if (deleteConfirm) {
-        this.$https.delete`${VITE_APP_URL}/api/${VITE_APP_PATH}/carts`
-          .then(() => {
-            this.getCarts();
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: '購物車已全部刪除',
-              showConfirmButton: true,
-              confirmButtonText: '確認',
-            });
-          })
-          .catch((err) => alert(err.response.data.message));
-      }
     },
     changeLoading(modalLoading) {
       this.loadingItem = modalLoading;

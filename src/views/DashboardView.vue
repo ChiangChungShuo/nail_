@@ -1,5 +1,4 @@
 <template>
-  這是"後台"頁面
   <RouterLink to="/admin/products">後台產品列表</RouterLink> ｜
   <RouterLink to="/admin/orders">後台訂單管理</RouterLink> ｜
   <RouterLink to="/">返回前台</RouterLink> ｜
