@@ -60,7 +60,17 @@ export default {
 </script>
 
 <style>
-.conatainer {
-  justify-content: center;
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.navbar-nav {
+  color: #4e6752ed;
+  font-weight: 400;
+}
+.navbar-nav :hover {
+  background: #f0f4f1;
+  color: #4e6752ed;
 }
 </style>
