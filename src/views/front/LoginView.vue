@@ -1,5 +1,4 @@
 <template>
-  這是登入頁面
   <form class="form-signin" @submit.prevent="login">
     <!-- v-on 可用@縮寫 -->
     <div class="form-floating mb-3">

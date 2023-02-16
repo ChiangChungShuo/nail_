@@ -1,7 +1,6 @@
 <template>
   <VueLoading v-model:active="isLoading"></VueLoading>
   <div>
-    單一產品頁面
     <h2>{{ product.title }}</h2>
     <img :src="product.imageUrl" width="500" alt="" />
     <p>{{ product.description }}</p>

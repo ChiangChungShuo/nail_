@@ -1,5 +1,5 @@
 <template>
-  <h1>This is an about page</h1>
+  <h1>關於我</h1>
 </template>
 
 <script></script>

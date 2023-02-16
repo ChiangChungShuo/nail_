@@ -1,3 +1,122 @@
 <template>
-  <main>這是首頁eee</main>
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide">
+        <div class="card mb-4 h-100">
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
+            class="card-img-top"
+            alt="product-image"
+          />
+          <div class="card-body">
+            <h6 class="card-title">大漂亮</h6>
+            <div
+              class="
+                card-text
+                d-flex
+                justify-content-between
+                align-items-center
+              "
+            >
+              <del>NT 1399 元</del>
+              <strong class="text-danger">NT 999元</strong>
+            </div>
+            <button class="btn btn-outline-danger w-100 mt-2 I-btn">
+              前往商品
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="card mb-4 h-100">
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484384985.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=fTD6NMgBjsg%2FGZb9LbzotMsXTQxIqsTwjI%2FTZVVVDOS%2FDKJIc10yX4YAmvz5arERw7uVQNOuWDlOZAlXgXqZ1QWeSFU0TUu1iJ0IveuXBByuXI8yfdA5uKYkhtBgAdDHEZoRkRbJ%2Bx2yNA8uIUTsQrv%2FeqlZ6Cpp%2BDQneLX33cr4WIPyQUjhuIXOd9hZhFCyXxpVdwxE0T%2FMR56th%2BId9vQ%2B2gc0iPSLNhwi3zxkgq%2B35uoCdLoedChOsFYl9xUezoEUFWj5oxk3sp6XVwisfxHKYI0qJ00E%2Fwer37722d7h4pK9IgkmfZhA99T3fVsIrLBedRBWD7Dl66MIb7YxIQ%3D%3D"
+            class="card-img-top"
+            alt="product-image"
+          />
+          <div class="card-body">
+            <h6 class="card-title">小可愛</h6>
+            <div
+              class="
+                card-text
+                d-flex
+                justify-content-between
+                align-items-center
+              "
+            >
+              <del>NT 1399 元</del>
+              <strong class="text-danger">NT 999元</strong>
+            </div>
+            <button class="btn btn-outline-danger w-100 mt-2 I-btn">
+              前往商品
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="card mb-4 h-100">
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484577503.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Malgw%2FY9V7ZMjBbG6w3lpufLOcLy6W3yBm8k%2BNWP2e8Mxh3%2BaA3s9LXhErITGai%2FjJpgUKVhd7b8F5OB1cbYlnUchBkTgGCDBz2sw%2Bh1uqsWhZs1kTlelsnTmlMcXWdN%2BmkKy%2BoGTD7it5f7ar3%2FC6o7NDBSX07a05QQHzFVo1S8Nc4RllDM3saIqhpNqkNjii9rJ45QrgQNF%2F1cNt7dbLrFe3mFp8Y9NRdUzNw9sQkqpoQTQJBcU18zhkxmKhr5BI%2FQBGVHYsHgoq8%2Fr9u2jB2jv7GdIlcp4Tqhm7LJr5J7lWchOXTOwyVAXPukfn0q0PIY3hqTNYGSbuAcrKxARQ%3D%3D"
+            class="card-img-top"
+            alt="product-image"
+          />
+          <div class="card-body">
+            <h6 class="card-title">小清新</h6>
+            <div
+              class="
+                card-text
+                d-flex
+                justify-content-between
+                align-items-center
+              "
+            >
+              <del>NT 1390 元</del>
+              <strong class="text-danger">NT 990元</strong>
+            </div>
+            <button class="btn btn-outline-danger w-100 mt-2 I-btn">
+              前往商品
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
+<style>
+.swiper {
+  width: 204px;
+}
+</style>
+
+<script>
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  loop: true,
+  slidesPerView: 3,
+  spaceBetween: 30,
+  autoplay: {
+    delay: 2000,
+    disableOnInteraction: false,
+  },
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+</script>

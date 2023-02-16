@@ -1,7 +1,6 @@
 <template>
   <VueLoading v-model:active="isLoading"></VueLoading>
-  <div>
-    產品頁面
+  <div class="container">
     <table class="table">
       <tbody>
         <tr v-for="product in products" :key="product.id">

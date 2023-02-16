@@ -3,7 +3,7 @@
   <div class="text-center" v-if="!cartStatus">
     <p>購物車內還沒有商品，快去選購吧！</p>
   </div>
-  <template v-else>
+  <div class="container" v-else>
     <div class="text-end">
       <button
         class="btn btn-outline-danger"
@@ -71,7 +71,7 @@
         </tr>
       </tfoot>
     </table>
-  </template>
+  </div>
 </template>
 
 
@@ -80,7 +80,6 @@
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 import Swal from 'sweetalert2';
 import axios from 'axios';
-
 export default {
   data() {
     return {
@@ -208,7 +207,13 @@ export default {
       this.$http
         .post(`${VITE_APP_URL}/api/${VITE_APP_PATH}/order`, { data })
         .then((res) => {
-          alert(res.data.message);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '成功送出訂單',
+            showConfirmButton: true,
+            confirmButtonText: '確認',
+          });
           this.$refs.form.resetForm();
           this.getCarts();
           this.message = '';
