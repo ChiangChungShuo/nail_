@@ -23,9 +23,11 @@
               <del>NT 1399 元</del>
               <strong class="text-danger">NT 999元</strong>
             </div>
-            <button class="btn btn-outline-danger w-100 mt-2 I-btn">
-              前往商品
-            </button>
+            <RouterLink class="nav-link" to="/products"
+              ><button class="btn btn-outline-primary w-100 mt-2 I-btn">
+                前往商品
+              </button></RouterLink
+            >
           </div>
         </div>
       </div>
@@ -50,9 +52,11 @@
               <del>NT 1399 元</del>
               <strong class="text-danger">NT 999元</strong>
             </div>
-            <button class="btn btn-outline-danger w-100 mt-2 I-btn">
-              前往商品
-            </button>
+            <RouterLink class="nav-link" to="/products"
+              ><button class="btn btn-outline-primary w-100 mt-2 I-btn">
+                前往商品
+              </button></RouterLink
+            >
           </div>
         </div>
       </div>
@@ -77,9 +81,11 @@
               <del>NT 1390 元</del>
               <strong class="text-danger">NT 990元</strong>
             </div>
-            <button class="btn btn-outline-danger w-100 mt-2 I-btn">
-              前往商品
-            </button>
+            <RouterLink class="nav-link" to="/products"
+              ><button class="btn btn-outline-primary w-100 mt-2 I-btn">
+                前往商品
+              </button></RouterLink
+            >
           </div>
         </div>
       </div>
