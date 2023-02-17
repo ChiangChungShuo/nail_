@@ -35,8 +35,8 @@ configure({
 setLocale("zh_TW");
 const app = createApp(App);
 const pinia = createPinia();
-app.component("ErrorForm", Form);
-app.component("ErrorField", Field);
+app.component("VForm", Form);
+app.component("VField", Field);
 app.component("ErrorMessage", ErrorMessage);
 app.use(createPinia());
 app.use(router);

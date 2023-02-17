@@ -12,7 +12,7 @@
           <h5 class="card-title">聖誕優惠</h5>
           <del>指定款NT$1399</del>
           <p class="card-text">聖誕優惠價NT$999</p>
-          <a href="#" class="btn btn-primary">活動詳情</a>
+          <router-link class="btn btn-primary" to="/news">活動詳情</router-link>
         </div>
       </div>
       <div class="card" style="width: 18rem">
@@ -25,7 +25,7 @@
           <h5 class="card-title">聖誕優惠</h5>
           <del>指定款NT$1399</del>
           <p class="card-text">聖誕優惠價NT$999</p>
-          <a href="#" class="btn btn-primary">活動詳情</a>
+          <router-link class="btn btn-primary" to="/news">活動詳情</router-link>
         </div>
       </div>
       <div class="card" style="width: 18rem">
@@ -38,7 +38,7 @@
           <h5 class="card-title">聖誕優惠</h5>
           <del>指定款NT$1399</del>
           <p class="card-text">聖誕優惠價NT$999</p>
-          <a href="#" class="btn btn-primary">活動詳情</a>
+          <router-link class="btn btn-primary" to="/news">活動詳情</router-link>
         </div>
       </div>
     </div>

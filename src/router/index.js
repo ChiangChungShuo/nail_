@@ -32,8 +32,20 @@ const router = createRouter({
           component: () => import("../views/front/ReserveView.vue"),
         },
         {
+          path: "news",
+          component: () => import("../views/front/NewsView.vue"),
+        },
+        {
+          path: "question",
+          component: () => import("../views/front/QuestionView.vue"),
+        },
+        {
           path: "login",
           component: () => import("../views/front/LoginView.vue"),
+        },
+        {
+          path: "favourite",
+          component: () => import("../views/front/FavouriteView.vue"),
         },
       ],
     },

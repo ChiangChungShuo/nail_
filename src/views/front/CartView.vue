@@ -51,7 +51,7 @@
                   :disabled="item.id === loadingItem"
                   @change="updatedCartItem(item)"
                 >
-                  <option :value="i" v-for="i in 20" :key="`i+'12345'`">
+                  <option :value="i" v-for="i in 20" :key="`${i}+'12345'`">
                     {{ i }}
                   </option>
                 </select>
@@ -71,6 +71,81 @@
         </tr>
       </tfoot>
     </table>
+  </div>
+  <!-- 購買人表單 -->
+  <div class="my-5 row justify-content-center">
+    <v-form ref="form" class="col-md-6" v-slot="{ errors }" @submit="onSubmit">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <v-field
+          id="email"
+          name="email"
+          type="email"
+          class="form-control"
+          placeholder="請輸入 Email"
+          rules="required|email"
+          :class="{ 'is-invalid': errors.email }"
+          v-model="user.email"
+        ></v-field>
+        <error-message name="email" class="invalid-feedback"></error-message>
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">姓名</label>
+        <v-field
+          id="name"
+          name="姓名"
+          type="text"
+          class="form-control"
+          placeholder="請輸入姓名"
+          rules="required"
+          :class="{ 'is-invalid': errors.姓名 }"
+          v-model="user.name"
+        ></v-field>
+        <error-message name="姓名" class="invalid-feedback"></error-message>
+      </div>
+      <div class="mb-3">
+        <label for="tel" class="form-label">電話</label>
+        <!-- 使用 v-bind 綁定 :rules="isPhone" 綁定methods isPhone方法 -->
+        <v-field
+          id="tel"
+          name="電話"
+          type="tel"
+          class="form-control"
+          placeholder="請輸入電話"
+          :rules="isPhone"
+          :class="{ 'is-invalid': errors.電話 }"
+          v-model="user.tel"
+        ></v-field>
+        <error-message name="電話" class="invalid-feedback"></error-message>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">地址</label>
+        <v-field
+          id="address"
+          name="地址"
+          type="text"
+          class="form-control"
+          placeholder="請輸入地址"
+          rules="required"
+          :class="{ 'is-invalid': errors['地址'] }"
+          v-model="user.address"
+        ></v-field>
+        <error-message name="地址" class="invalid-feedback"></error-message>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">留言</label>
+        <textarea
+          id="message"
+          class="form-control"
+          cols="30"
+          rows="10"
+          v-model="user.message"
+        ></textarea>
+      </div>
+      <div class="text-end">
+        <button type="submit" class="btn btn-danger">送出訂單</button>
+      </div>
+    </v-form>
   </div>
 </template>
 
