@@ -28,6 +28,10 @@ const router = createRouter({
           component: () => import("../views/front/CartView.vue"),
         },
         {
+          path: "reserve",
+          component: () => import("../views/front/ReserveView.vue"),
+        },
+        {
           path: "login",
           component: () => import("../views/front/LoginView.vue"),
         },
