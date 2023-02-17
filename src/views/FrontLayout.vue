@@ -186,10 +186,11 @@ export default {
   opacity: 0.9; /*设置透明度*/
 }
 .banner h2 {
-  transform: translate(5%,80%);
+  transform: translate(5%, 80%);
   font-size: 40px;
-  background-color: rgb(245, 255, 255);
   color: #27612f;
   position: absolute;
+  background-color: rgba(244, 251, 251, 0.512);
+  width: 370px;
 }
 </style>
