@@ -1,44 +1,56 @@
 <template>
-  <div class="container">
-    <h2 class="m-5">最新消息</h2>
-    <div class="news d-flex justify-content-between mb-5">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676584071318.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=lpf3C1%2F2mtC8DlCQwSUTyiI5J5s5tH8kL1t5xkh6jzQIoq5nuVnghoLYfxdtvEk3CuRsbb6iMxlbE5fUOf3BeOgWmFFl6j%2Fd8PMT1ieomE%2FXCgmGb1yQp%2FjBrJYQF25iHMWM%2FoJmqbmGPFzdALk5hUxUH4e5d5tDZs2Ezgf1DJHupv9HkrSx6GUaHZWR8cZHBHIYiQqlA%2FWTyahby2EGbAE74q1%2B53vSpo7WlIaD2Mv5xmHfVYogLq7QJ9NJmE1HMM7DDT3fRe9TNaWwWwSj%2BUWQKLGB16qPx7sa6IqNDNo0adRUqxP7MNhPPIZDwJI141mEDEz07Y7toOg%2FgZy4hQ%3D%3D"
-          class="card-img-top"
-          alt="img"
-        />
-        <div class="card-body">
-          <h5 class="card-title">聖誕優惠</h5>
-          <del>指定款NT$1399</del>
-          <p class="card-text">聖誕優惠價NT$999</p>
-          <router-link class="btn btn-primary" to="/news">活動詳情</router-link>
+  <div class="container my-5">
+    <h2 class="d-flex justify-content-center mb-4">最新消息</h2>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676584071318.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=lpf3C1%2F2mtC8DlCQwSUTyiI5J5s5tH8kL1t5xkh6jzQIoq5nuVnghoLYfxdtvEk3CuRsbb6iMxlbE5fUOf3BeOgWmFFl6j%2Fd8PMT1ieomE%2FXCgmGb1yQp%2FjBrJYQF25iHMWM%2FoJmqbmGPFzdALk5hUxUH4e5d5tDZs2Ezgf1DJHupv9HkrSx6GUaHZWR8cZHBHIYiQqlA%2FWTyahby2EGbAE74q1%2B53vSpo7WlIaD2Mv5xmHfVYogLq7QJ9NJmE1HMM7DDT3fRe9TNaWwWwSj%2BUWQKLGB16qPx7sa6IqNDNo0adRUqxP7MNhPPIZDwJI141mEDEz07Y7toOg%2FgZy4hQ%3D%3D"
+            class="card-img-top"
+            alt="img"
+          />
+          <div class="card-body">
+            <h5 class="card-title">聖誕優惠</h5>
+            <del>指定款NT$1399</del>
+            <p class="card-text">聖誕優惠價NT$999</p>
+            <router-link class="btn btn-primary" to="/news"
+              >活動詳情</router-link
+            >
+          </div>
         </div>
       </div>
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676584071318.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=lpf3C1%2F2mtC8DlCQwSUTyiI5J5s5tH8kL1t5xkh6jzQIoq5nuVnghoLYfxdtvEk3CuRsbb6iMxlbE5fUOf3BeOgWmFFl6j%2Fd8PMT1ieomE%2FXCgmGb1yQp%2FjBrJYQF25iHMWM%2FoJmqbmGPFzdALk5hUxUH4e5d5tDZs2Ezgf1DJHupv9HkrSx6GUaHZWR8cZHBHIYiQqlA%2FWTyahby2EGbAE74q1%2B53vSpo7WlIaD2Mv5xmHfVYogLq7QJ9NJmE1HMM7DDT3fRe9TNaWwWwSj%2BUWQKLGB16qPx7sa6IqNDNo0adRUqxP7MNhPPIZDwJI141mEDEz07Y7toOg%2FgZy4hQ%3D%3D"
-          class="card-img-top"
-          alt="img"
-        />
-        <div class="card-body">
-          <h5 class="card-title">聖誕優惠</h5>
-          <del>指定款NT$1399</del>
-          <p class="card-text">聖誕優惠價NT$999</p>
-          <router-link class="btn btn-primary" to="/news">活動詳情</router-link>
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676584071318.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=lpf3C1%2F2mtC8DlCQwSUTyiI5J5s5tH8kL1t5xkh6jzQIoq5nuVnghoLYfxdtvEk3CuRsbb6iMxlbE5fUOf3BeOgWmFFl6j%2Fd8PMT1ieomE%2FXCgmGb1yQp%2FjBrJYQF25iHMWM%2FoJmqbmGPFzdALk5hUxUH4e5d5tDZs2Ezgf1DJHupv9HkrSx6GUaHZWR8cZHBHIYiQqlA%2FWTyahby2EGbAE74q1%2B53vSpo7WlIaD2Mv5xmHfVYogLq7QJ9NJmE1HMM7DDT3fRe9TNaWwWwSj%2BUWQKLGB16qPx7sa6IqNDNo0adRUqxP7MNhPPIZDwJI141mEDEz07Y7toOg%2FgZy4hQ%3D%3D"
+            class="card-img-top"
+            alt="img"
+          />
+          <div class="card-body">
+            <h5 class="card-title">聖誕優惠</h5>
+            <del>指定款NT$1399</del>
+            <p class="card-text">聖誕優惠價NT$999</p>
+            <router-link class="btn btn-primary" to="/news"
+              >活動詳情</router-link
+            >
+          </div>
         </div>
       </div>
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676584071318.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=lpf3C1%2F2mtC8DlCQwSUTyiI5J5s5tH8kL1t5xkh6jzQIoq5nuVnghoLYfxdtvEk3CuRsbb6iMxlbE5fUOf3BeOgWmFFl6j%2Fd8PMT1ieomE%2FXCgmGb1yQp%2FjBrJYQF25iHMWM%2FoJmqbmGPFzdALk5hUxUH4e5d5tDZs2Ezgf1DJHupv9HkrSx6GUaHZWR8cZHBHIYiQqlA%2FWTyahby2EGbAE74q1%2B53vSpo7WlIaD2Mv5xmHfVYogLq7QJ9NJmE1HMM7DDT3fRe9TNaWwWwSj%2BUWQKLGB16qPx7sa6IqNDNo0adRUqxP7MNhPPIZDwJI141mEDEz07Y7toOg%2FgZy4hQ%3D%3D"
-          class="card-img-top"
-          alt="img"
-        />
-        <div class="card-body">
-          <h5 class="card-title">聖誕優惠</h5>
-          <del>指定款NT$1399</del>
-          <p class="card-text">聖誕優惠價NT$999</p>
-          <router-link class="btn btn-primary" to="/news">活動詳情</router-link>
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676584071318.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=lpf3C1%2F2mtC8DlCQwSUTyiI5J5s5tH8kL1t5xkh6jzQIoq5nuVnghoLYfxdtvEk3CuRsbb6iMxlbE5fUOf3BeOgWmFFl6j%2Fd8PMT1ieomE%2FXCgmGb1yQp%2FjBrJYQF25iHMWM%2FoJmqbmGPFzdALk5hUxUH4e5d5tDZs2Ezgf1DJHupv9HkrSx6GUaHZWR8cZHBHIYiQqlA%2FWTyahby2EGbAE74q1%2B53vSpo7WlIaD2Mv5xmHfVYogLq7QJ9NJmE1HMM7DDT3fRe9TNaWwWwSj%2BUWQKLGB16qPx7sa6IqNDNo0adRUqxP7MNhPPIZDwJI141mEDEz07Y7toOg%2FgZy4hQ%3D%3D"
+            class="card-img-top"
+            alt="img"
+          />
+          <div class="card-body">
+            <h5 class="card-title">聖誕優惠</h5>
+            <del>指定款NT$1399</del>
+            <p class="card-text">聖誕優惠價NT$999</p>
+            <router-link class="btn btn-primary" to="/news"
+              >活動詳情</router-link
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -80,20 +92,13 @@
     </div>
   </div>
   <div class="container">
-    <h2 class="d-flex justify-content-center">熱門款式</h2>
-    <div class="pt-5">
-      <swiper
-        :slidesPerView="3"
-        :spaceBetween="40"
-        :pagination="{
-          clickable: true,
-        }"
-        :modules="modules"
-        class="mySwipe"
-      >
+    <div class="row">
+      <h2 class="d-flex justify-content-center mb-5">熱門款式</h2>
+
+      <div class="col-12 col-md-3">
         <swiper-slide
           ><div class="swiper-slide">
-            <div class="card h-90">
+            <div class="card">
               <img
                 src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
                 class="card-img-top"
@@ -121,9 +126,11 @@
             </div>
           </div>
         </swiper-slide>
+      </div>
+      <div class="col-12 col-md-3">
         <swiper-slide
           ><div class="swiper-slide">
-            <div class="card mb-4 h-190">
+            <div class="card">
               <img
                 src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
                 class="card-img-top"
@@ -151,9 +158,11 @@
             </div>
           </div>
         </swiper-slide>
+      </div>
+      <div class="col-12 col-md-3">
         <swiper-slide
           ><div class="swiper-slide">
-            <div class="card mb-4 h-80">
+            <div class="card">
               <img
                 src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
                 class="card-img-top"
@@ -181,9 +190,11 @@
             </div>
           </div>
         </swiper-slide>
+      </div>
+      <div class="col-12 col-md-3">
         <swiper-slide
           ><div class="swiper-slide">
-            <div class="card mb-4 h-80">
+            <div class="card">
               <img
                 src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
                 class="card-img-top"
@@ -211,9 +222,10 @@
             </div>
           </div>
         </swiper-slide>
-      </swiper>
+      </div>
     </div>
   </div>
+
   <div class="about bg-warning d-flex justify-content-center p-5 mb-5">
     <div class="card mb-3" style="max-width: 1200px">
       <div class="row g-4">
