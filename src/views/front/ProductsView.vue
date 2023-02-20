@@ -44,6 +44,7 @@
                   <br />
                   {{ product.content }}
                 </p>
+                
                 <button
                   type="button"
                   class="btn btn-danger mt-auto fs-6 w-100"
@@ -54,6 +55,10 @@
               </div>
             </div>
           </div>
+          <pagination-component
+            :pages="pagination"
+            @go-to-page="getProducts"
+          ></pagination-component>
         </div>
       </div>
     </div>
@@ -63,25 +68,28 @@
 <script>
 import { RouterLink } from 'vue-router';
 import Swal from 'sweetalert2';
+import PaginationComponent from '../../components/paginationComponent.vue';
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
-
 export default {
   data() {
     return {
       isLoading: false,
       products: [],
+      pagination: {},
     };
   },
   components: {
     RouterLink,
+    PaginationComponent,
   },
   methods: {
-    getProducts() {
+    getProducts(page = 1) {
       this.$http
-        .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products/all`)
+        .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?page=${page}`)
         .then((res) => {
           console.log(res);
           this.products = res.data.products;
+          this.pagination = res.data.pagination;
         })
         .catch((err) => {
           console.error(err);
