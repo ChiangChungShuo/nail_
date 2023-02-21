@@ -20,7 +20,7 @@
       </div>
       <div class="col-md-10">
         <div class="row">
-          <h1 class="d-flex justify-content-center mb-5">
+          <h1 class="d-flex justify-content-center my-4">
             {{ product.title }}
           </h1>
           <div class="col-md-4 col-sm-6">
@@ -39,24 +39,28 @@
               </div>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-md-6 col-sm-6" style="font-size: 25px">
             <p class="">商品描述 : {{ product.description }}</p>
             <p class="">商品內容 : {{ product.content }}</p>
-            <div class="h5" v-if="product.price === product.origin_price">
+            <div v-if="product.price === product.origin_price">
               {{ product.price }} 元
             </div>
-            <div class="" v-else>
+            <div style="font-size: 16px" v-else>
               <del class="h6">原價 {{ product.origin_price }} 元</del>
-              <div class="h5">現在只要 {{ product.price }} 元</div>
+              <div class="h5" style="color: #4e6752">
+                現在只要{{ product.price }} 元
+              </div>
+            </div>
+            <div>
               <h2
-                class="card-title"
-                style="color: #4e6752; font-weight: 600; font-size: 25px"
+                class="card-title mt-4"
+                style="font-weight: 600; font-size: 22px"
               >
                 Morizanko 預約須知
               </h2>
               <p
                 class="card-text"
-                style="font-weight: 400; font-size: 16px; line-height: 40px"
+                style="font-weight: 500; font-size: 15px; line-height: 35px"
               >
                 ⚠️
                 施作過程中可能會有小狀況發生及剪甘皮的受傷風險，會小心及避免。
@@ -72,7 +76,8 @@
                 🧡預約詢問請私訊官方Line @285fyfqx
               </p>
             </div>
-            <div class="input-group">
+
+            <div class="input-group mt-3">
               <input
                 type="number"
                 class="form-control"
@@ -92,7 +97,10 @@
         </div>
       </div>
       <div class="d-flex justify-content-end">
-        <router-link class="btn btn-outline-secondary my-3" :to="`/products`">
+        <router-link
+          class="btn btn-sm btn-outline-secondary my-3"
+          :to="`/products`"
+        >
           返回產品列表
         </router-link>
       </div>
