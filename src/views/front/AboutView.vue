@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <h1 style="text-align: center" class="mt-5">聯絡我們</h1>
+      <h1 style="text-align: center;font-size: 50px" class="mt-5">聯絡我們</h1>
       <div class="col-md-6 col-sm-6 my-5">
         <h2 style="text-align: center">預約請加入官方ＬＩＮＥ</h2>
         <div class="d-flex justify-content-around my-5">
