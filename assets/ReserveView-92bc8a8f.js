@@ -1,0 +1,1 @@
+import{_ as e,o as s,c,a as o}from"./index-39195d77.js";const t={},a={class:"container"},n=o("div",{class:"row"},"你好",-1),r=[n];function _(i,d){return s(),c("div",a,r)}const l=e(t,[["render",_]]);export{l as default};
