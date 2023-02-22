@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="#"
         ><img
@@ -8,7 +8,9 @@
           class="d-inline-block"
           width="60"
         />
-        <span class="h6 mx-3" style="4E6752">Marizanko Nails Studio</span></a
+        <span class="h6 mx-3" style="color: #4e6752"
+          >Marizanko Nails Studio</span
+        ></a
       >
       <button
         class="navbar-toggler"
@@ -89,7 +91,7 @@
               class="mx-4"
               width="60"
             />
-            <span class="h6 mx-3" style="clolor: 4e6752"
+            <span class="h6 mx-3" style="color: #4e6752"
               >Marizanko Nails Studio</span
             ></a
           >
@@ -148,10 +150,10 @@
 </template>
 
 <script>
-import { RouterView } from 'vue-router';
-import { Navigation, Pagination } from 'swiper';
+import { RouterView } from "vue-router";
+import { Navigation, Pagination } from "swiper";
 export default {
-  name: 'my-component',
+  name: "my-component",
   data() {
     return {
       modules: [Navigation, Pagination],

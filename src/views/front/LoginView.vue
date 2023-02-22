@@ -1,5 +1,9 @@
 <template>
-  <form class="form-signin" @submit.prevent="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 style="font-size:50px;text-align: center" >morizanko後台</h1>
+        <form class="form-signin" @submit.prevent="login">
     <!-- v-on 可用@縮寫 -->
     <div class="form-floating mb-3">
       <!-- v-model此處綁定user.username -->
@@ -30,6 +34,10 @@
       登入
     </button>
   </form>
+      </div>
+    </div>
+  </div>
+  
 </template>
 
 <script>

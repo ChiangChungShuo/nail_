@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   data() {
@@ -121,11 +121,11 @@ export default {
   methods: {
     gteProduct() {
       //取得ID
-      console.log('$route', this.$route); //屬性
+      console.log("$route", this.$route); //屬性
       const { id } = this.$route.params;
       console.log(id);
 
-      console.log('router', this.$router); //方法
+      console.log("router", this.$router); //方法
       // this.$router.push('/');
       this.$http
         .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/product/${id}`)
@@ -147,11 +147,11 @@ export default {
           console.log(res);
           // alert(res.data.message);
           Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: '成功加入購物車',
+            position: "center",
+            icon: "success",
+            title: "成功加入購物車",
             showConfirmButton: true,
-            confirmButtonText: '確認',
+            confirmButtonText: "確認",
           });
           // this.products = res.data.products;
         })

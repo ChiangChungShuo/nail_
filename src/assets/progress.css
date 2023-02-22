@@ -1,0 +1,38 @@
+.list {
+  display: flex;
+  justify-content: center;
+}
+.list li {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  background-color: #99b29d;
+  border-radius: 50%;
+  justify-content: center;
+  position: relative;
+}
+
+.list li + li {
+  margin-left: 100px;
+}
+.list li + li::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 5px;
+  background-color: #99b29d;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: -100px;
+  margin: auto;
+}
+.list li.active ~ li {
+  background-color: rgba(157, 156, 156, 0.463);
+}
+.list li.active ~ li::before {
+  background-color: rgba(157, 156, 156, 0.463);
+}

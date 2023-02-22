@@ -47,7 +47,19 @@ const router = createRouter({
           path: "favourite",
           component: () => import("../views/front/FavouriteView.vue"),
         },
+        {
+          path: "subscriber",
+          component: () => import("../views/front/SubscriberView.vue"),
+        },
+        {
+          path: "finish",
+          component: () => import("../views/front/FinishView.vue"),
+        },
       ],
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      component: () => import("../views/NotFoundView.vue"),
     },
     {
       path: "/admin", //動態路由
@@ -63,10 +75,6 @@ const router = createRouter({
           component: () => import("../views/admin/AdminOrder.vue"),
         },
       ],
-    },
-    {
-      path: "/:pathMatch(.*)*",
-      component: () => import("../views/NotFoundView.vue"),
     },
   ],
 });

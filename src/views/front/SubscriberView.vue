@@ -1,9 +1,8 @@
 <template>
-  <VueLoading v-model:active="isLoading"></VueLoading>
   <div class="container">
-    <div class="row">
-      <ol class="list mt-5">
-        <li class="active">
+    <div class="row my-5 justify-content-center">
+      <ol class="list">
+        <li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="25"
@@ -17,7 +16,7 @@
           </svg>
           購物清單
         </li>
-        <li>
+        <li class="active">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="25"
@@ -49,87 +48,83 @@
           完成訂單
         </li>
       </ol>
-    </div>
-  </div>
-  <div class="text-center" v-if="!cartStatus">
-    <p style="font-size: 30px" class="my-5">購物車內還沒有商品，快去選購吧！</p>
-  </div>
-  <div class="container" v-else>
-    <div class="row">
-      <div class="col col-md-12">
-        <div class="text-end">
-          <button
-            class="btn btn-outline-danger mt-5"
-            type="button"
-            :disabled="!cartStatus"
-            @click="deleteAll()"
-          >
-            清空購物車
-          </button>
+      <v-form
+        ref="form"
+        class="col-md-6 mt-5"
+        v-slot="{ errors }"
+        @submit="onSubmit"
+      >
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <v-field
+            id="email"
+            name="email"
+            type="email"
+            class="form-control"
+            placeholder="請輸入 Email"
+            rules="required|email"
+            :class="{ 'is-invalid': errors.email }"
+            v-model="user.email"
+          ></v-field>
+          <error-message name="email" class="invalid-feedback"></error-message>
         </div>
-        <table class="table align-middle">
-          <thead>
-            <tr>
-              <th></th>
-              <th>圖片</th>
-              <th>品名</th>
-              <th style="width: 150px">數量/單位</th>
-              <th class="text-end">單價</th>
-              <th class="text-end">小計</th>
-            </tr>
-          </thead>
-          <tbody>
-            <template v-if="cart.carts">
-              <tr v-for="item in cart.carts" :key="item.id">
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-danger btn-sm"
-                    :disabled="item.id === loadingItem"
-                    @click="delCartItem(item)"
-                  >
-                    <i class="fas fa-spinner fa-pulse"></i>
-                    x
-                  </button>
-                </td>
-                <td><img :src="item.product.imageUrl" width="150" alt="" /></td>
-                <td>{{ item.product.title }}</td>
-                <td>
-                  <div class="input-group input-group-sm">
-                    <select
-                      name=""
-                      id=""
-                      class="form-select"
-                      v-model="item.qty"
-                      :disabled="item.id === loadingItem"
-                      @change="updatedCartItem(item)"
-                    >
-                      <option :value="i" v-for="i in 20" :key="`${i}+'12345'`">
-                        {{ i }}
-                      </option>
-                    </select>
-                  </div>
-                </td>
-                <td class="text-end">
-                  {{ item.product.price }}
-                </td>
-                <td class="text-end">{{ item.total }}</td>
-              </tr>
-            </template>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="5" class="text-end">總計</td>
-              <td class="text-end">{{ cart.total }}</td>
-            </tr>
-          </tfoot>
-        </table>
-        <div class="text-end">
-          <router-link class="btn btn-outline-primary" to="/subscriber"
-            >下一步</router-link
-          >
+        <div class="mb-3">
+          <label for="name" class="form-label">姓名</label>
+          <v-field
+            id="name"
+            name="姓名"
+            type="text"
+            class="form-control"
+            placeholder="請輸入姓名"
+            rules="required"
+            :class="{ 'is-invalid': errors.姓名 }"
+            v-model="user.name"
+          ></v-field>
+          <error-message name="姓名" class="invalid-feedback"></error-message>
         </div>
-      </div>
+        <div class="mb-3">
+          <label for="tel" class="form-label">電話</label>
+          <!-- 使用 v-bind 綁定 :rules="isPhone" 綁定methods isPhone方法 -->
+          <v-field
+            id="tel"
+            name="電話"
+            type="tel"
+            class="form-control"
+            placeholder="請輸入電話"
+            :rules="isPhone"
+            :class="{ 'is-invalid': errors.電話 }"
+            v-model="user.tel"
+          ></v-field>
+          <error-message name="電話" class="invalid-feedback"></error-message>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">地址</label>
+          <v-field
+            id="address"
+            name="地址"
+            type="text"
+            class="form-control"
+            placeholder="請輸入地址"
+            rules="required"
+            :class="{ 'is-invalid': errors['地址'] }"
+            v-model="user.address"
+          ></v-field>
+          <error-message name="地址" class="invalid-feedback"></error-message>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">留言</label>
+          <textarea
+            id="message"
+            class="form-control"
+            cols="30"
+            rows="10"
+            v-model="user.message"
+          ></textarea>
+        </div>
+        <div class="text-end">
+          <button type="submit" class="btn btn-danger">送出訂單</button>
+        </div>
+      </v-form>
     </div>
   </div>
 </template>
@@ -150,6 +145,13 @@ export default {
       isLoading: false,
       //操作完成才能在操作下一個動作
       loadingItem: "", //存id
+      user: {
+        email: "",
+        name: "",
+        tel: "",
+        address: "",
+      },
+      message: "",
     };
   },
   methods: {
@@ -245,6 +247,39 @@ export default {
     },
     changeLoading(modalLoading) {
       this.loadingItem = modalLoading;
+    },
+    //送出訂單
+    onSubmit() {
+      const data = {
+        user: this.user,
+        message: this.message,
+      };
+      if (this.cart.carts.length === 0) {
+        alert("購物車內還沒有商品唷～");
+        return;
+      }
+      this.$http
+        .post(`${VITE_APP_URL}/api/${VITE_APP_PATH}/order`, { data })
+        .then((res) => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "成功送出訂單",
+            showConfirmButton: true,
+            confirmButtonText: "確認",
+          });
+          this.$refs.form.resetForm();
+          this.getCarts();
+          this.message = "";
+          this.$router.push("/finish");
+        })
+        .catch((err) => {
+          alert(err.response.data.message);
+        });
+    },
+    isPhone(value) {
+      const phoneNumber = /^(09)[0-9]{8}$/;
+      return phoneNumber.test(value) ? true : "需要正確的電話號碼";
     },
   },
   mounted() {
