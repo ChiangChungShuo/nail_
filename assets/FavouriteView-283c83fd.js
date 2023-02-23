@@ -1,1 +1,0 @@
-import{_ as s,o as c,c as t,a as e}from"./index-5637f318.js";const o={},a={class:"container"},n=e("div",{class:"row"},[e("h1",{style:{"font-size":"50px","text-align":"center"},class:"my-4"},"我的最愛"),e("div",{class:"col-md-6 col-sm-6"})],-1),r=[n];function _(i,l){return c(),t("div",a,r)}const f=s(o,[["render",_]]);export{f as default};
