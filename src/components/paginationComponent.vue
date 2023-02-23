@@ -1,51 +1,35 @@
 <template>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-end">
-      <li class="page-item" :class="{ disabled: !pages.has_pre }">
-        <a
-          class="page-link"
-          href="#"
-          aria-label="Previous"
-          @click.prevent="goToPage(pages.current_page - 1)"
-        >
-          <span aria-hidden="true">&laquo;</span></a
-        >
-      </li>
-      <li
-        v-for="(item, index) in pages.total_pages"
-        :key="index"
-        class="page-item"
-      >
-        <span v-if="item === pages.current_page" class="page-link">{{
-          item
-        }}</span>
-        <a v-else class="page-link" href="#" @click.prevent="goToPage(item)">{{
-          item
-        }}</a>
-      </li>
-      <li class="page-item" :class="{ disabled: !pages.has_next }">
-        <a
-          class="page-link"
-          href="#"
-          @click.prevent="goToPage(pages.current_page + 1)"
-        >
-          <span aria-hidden="true">&raquo;</span></a
-        >
-      </li>
-    </ul>
-  </nav>
+    <nav aria-label="Page navigation">
+        <ul class="pagination d-flex justify-content-center">
+          <li class="page-item" :class="{'disabled' : !pagination.has_pre }">
+            <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page - 1)" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li :class="`page-item ${index === pagination.current_page ? 'active' : '' }`" v-for="index in pagination.total_pages" :key="index + 'page'">
+            <a class="page-link" href="#" @click.prevent="changePage(index)">{{ index }}</a>
+          </li>
+          <li class="page-item" :class="{'disabled' : !pagination.has_next }">
+            <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page + 1)" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
 </template>
 
 <script>
 export default {
-  props: ['pages'],
-  data() {
-    return {};
+  props: ['pagination'],
+  data () {
+    return {
+    }
   },
   methods: {
-    goToPage(page) {
-      this.$emit('goToPage', page);
-    },
-  },
-};
+    changePage (page) {
+      // 呼叫根元件的方法 取名 & 參數
+      this.$emit('changePage', page)
+    }
+  }
+}
 </script>

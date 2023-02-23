@@ -1,6 +1,12 @@
 <template>
-  <div class="container my-5">
-    <div class="row">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">首頁</a></li>
+        <li class="breadcrumb-item active" aria-current="page">美甲款式</li>
+      </ol>
+    </nav>
+    <div class="row mt-5">
       <div class="col-md-2">
         <div class="list-group">
           <a
@@ -44,7 +50,7 @@
                   <br />
                   {{ product.content }}
                 </p>
-                
+
                 <button
                   type="button"
                   class="btn btn-danger mt-auto fs-6 w-100"
@@ -66,9 +72,9 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router';
-import Swal from 'sweetalert2';
-import PaginationComponent from '../../components/paginationComponent.vue';
+import { RouterLink } from "vue-router";
+import Swal from "sweetalert2";
+import PaginationComponent from "../../components/Pagination.vue";
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   data() {
@@ -106,11 +112,11 @@ export default {
           console.log(res);
           // alert(res.data.message);
           Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: '成功加入購物車',
+            position: "center",
+            icon: "success",
+            title: "成功加入購物車",
             showConfirmButton: true,
-            confirmButtonText: '確認',
+            confirmButtonText: "確認",
           });
           // this.products = res.data.products;
         })
@@ -165,7 +171,7 @@ export default {
   opacity: 0;
 }
 .products-img:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   left: 0;

@@ -9,7 +9,7 @@
           width="60"
         />
         <span class="h6 mx-3" style="color: #4e6752"
-          >Marizanko Nails Studio</span
+          >Morizanko Nails Studio</span
         ></a
       >
       <button
@@ -92,7 +92,7 @@
               width="60"
             />
             <span class="h6 mx-3" style="color: #4e6752"
-              >Marizanko Nails Studio</span
+              >Morizanko Nails Studio</span
             ></a
           >
           <div class="d-flex mx-3 mt-5">
@@ -152,6 +152,7 @@
 <script>
 import { RouterView } from "vue-router";
 import { Navigation, Pagination } from "swiper";
+
 export default {
   name: "my-component",
   data() {

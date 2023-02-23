@@ -67,13 +67,16 @@
             清空購物車
           </button>
         </div>
-        <table class="table align-middle">
+        <table
+          class="table align-middle my-5"
+          style="border-style: solid; border-width: 10px"
+        >
           <thead>
             <tr>
               <th></th>
               <th>圖片</th>
               <th>品名</th>
-              <th style="width: 150px">數量/單位</th>
+              <th style="width: 50px">數量/單位</th>
               <th class="text-end">單價</th>
               <th class="text-end">小計</th>
             </tr>
@@ -92,7 +95,7 @@
                     x
                   </button>
                 </td>
-                <td><img :src="item.product.imageUrl" width="150" alt="" /></td>
+                <td><img :src="item.product.imageUrl" width="80" alt="" /></td>
                 <td>{{ item.product.title }}</td>
                 <td>
                   <div class="input-group input-group-sm">

@@ -1,6 +1,13 @@
 <template>
   <div class="container">
     <div class="row">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">首頁</a></li>
+          <li class="breadcrumb-item active" aria-current="page">預約須知</li>
+        </ol>
+      </nav>
+
       <div class="col-md-12 col-sm-6">
         <h1 style="text-align: center; font-size: 50px" class="my-5">
           預約須知
