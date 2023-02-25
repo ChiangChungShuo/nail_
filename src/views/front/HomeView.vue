@@ -2,11 +2,12 @@
   <div class="container my-5">
     <h2 class="d-flex justify-content-center mb-4">最新消息</h2>
     <div class="row">
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-4 mb-3 ">
         <div class="card">
           <img
+            style="height: 300px"
             src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676584071318.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=lpf3C1%2F2mtC8DlCQwSUTyiI5J5s5tH8kL1t5xkh6jzQIoq5nuVnghoLYfxdtvEk3CuRsbb6iMxlbE5fUOf3BeOgWmFFl6j%2Fd8PMT1ieomE%2FXCgmGb1yQp%2FjBrJYQF25iHMWM%2FoJmqbmGPFzdALk5hUxUH4e5d5tDZs2Ezgf1DJHupv9HkrSx6GUaHZWR8cZHBHIYiQqlA%2FWTyahby2EGbAE74q1%2B53vSpo7WlIaD2Mv5xmHfVYogLq7QJ9NJmE1HMM7DDT3fRe9TNaWwWwSj%2BUWQKLGB16qPx7sa6IqNDNo0adRUqxP7MNhPPIZDwJI141mEDEz07Y7toOg%2FgZy4hQ%3D%3D"
-            class="card-img-top"
+            class="card-img-top object-cover"
             alt="img"
           />
           <div class="card-body">
@@ -19,34 +20,36 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-4 mb-3">
         <div class="card">
           <img
-            src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676584071318.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=lpf3C1%2F2mtC8DlCQwSUTyiI5J5s5tH8kL1t5xkh6jzQIoq5nuVnghoLYfxdtvEk3CuRsbb6iMxlbE5fUOf3BeOgWmFFl6j%2Fd8PMT1ieomE%2FXCgmGb1yQp%2FjBrJYQF25iHMWM%2FoJmqbmGPFzdALk5hUxUH4e5d5tDZs2Ezgf1DJHupv9HkrSx6GUaHZWR8cZHBHIYiQqlA%2FWTyahby2EGbAE74q1%2B53vSpo7WlIaD2Mv5xmHfVYogLq7QJ9NJmE1HMM7DDT3fRe9TNaWwWwSj%2BUWQKLGB16qPx7sa6IqNDNo0adRUqxP7MNhPPIZDwJI141mEDEz07Y7toOg%2FgZy4hQ%3D%3D"
-            class="card-img-top"
+            src="https://i.imgur.com/pAIIwfL.jpg"
+            class="card-img-top object-cover"
+            style="height: 300px"
             alt="img"
           />
           <div class="card-body">
-            <h5 class="card-title">聖誕優惠</h5>
-            <del>指定款NT$1399</del>
-            <p class="card-text">聖誕優惠價NT$999</p>
+            <h5 class="card-title">IG打卡優惠</h5>
+            <span>分享優惠</span>
+            <p class="card-text">分享限時動態享有8折優惠</p>
             <router-link class="btn btn-primary" to="/news"
               >活動詳情</router-link
             >
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-4 mb-3">
         <div class="card">
           <img
-            src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676584071318.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=lpf3C1%2F2mtC8DlCQwSUTyiI5J5s5tH8kL1t5xkh6jzQIoq5nuVnghoLYfxdtvEk3CuRsbb6iMxlbE5fUOf3BeOgWmFFl6j%2Fd8PMT1ieomE%2FXCgmGb1yQp%2FjBrJYQF25iHMWM%2FoJmqbmGPFzdALk5hUxUH4e5d5tDZs2Ezgf1DJHupv9HkrSx6GUaHZWR8cZHBHIYiQqlA%2FWTyahby2EGbAE74q1%2B53vSpo7WlIaD2Mv5xmHfVYogLq7QJ9NJmE1HMM7DDT3fRe9TNaWwWwSj%2BUWQKLGB16qPx7sa6IqNDNo0adRUqxP7MNhPPIZDwJI141mEDEz07Y7toOg%2FgZy4hQ%3D%3D"
-            class="card-img-top"
+            style="height: 300px"
+            src="https://i.imgur.com/CULcimM.jpg"
+            class="card-img-top object-cover"
             alt="img"
           />
           <div class="card-body">
-            <h5 class="card-title">聖誕優惠</h5>
-            <del>指定款NT$1399</del>
-            <p class="card-text">聖誕優惠價NT$999</p>
+            <h5 class="card-title">生日優惠</h5>
+            <span>當月壽星優惠</span>
+            <p class="card-text">當月壽星8折優惠</p>
             <router-link class="btn btn-primary" to="/news"
               >活動詳情</router-link
             >
@@ -96,17 +99,23 @@
       <h2 class="d-flex justify-content-center mb-4">熱門款式</h2>
       <div class="col-md-12 col-sm-8">
         <swiper
-          :slides-per-view="3"
-          :space-between="50"
+          :spaceBetween="20"
+          :slides-per-view="2"
+          :centeredSlides="true"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: true,
+          }"
+          :navigation="true"
           :modules="modules"
-          navigation
-          :pagination="{ clickable: true }"
+          class="mySwiper"
         >
           <swiper-slide>
             <div class="card">
               <img
-                src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
-                class="card-img-top"
+                src="https://i.imgur.com/iMT8o3V.jpg"
+                class="card-img-top object-cover"
+                style="width: auto; height: 300px"
                 alt="product-image"
               />
               <div class="card-body">
@@ -128,8 +137,33 @@
           <swiper-slide>
             <div class="card">
               <img
-                src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
-                class="card-img-top"
+                src="https://i.imgur.com/d4QUoW6.jpg"
+                class="card-img-top object-cover"
+                alt="product-image"
+                style="width: auto; height: 300px"
+              />
+              <div class="card-body">
+                <h6 class="card-title">小花花</h6>
+                <div
+                  class="card-text d-flex justify-content-between align-items-center"
+                >
+                  <del>NT 1399 元</del>
+                  <strong class="text-danger">NT 999元</strong>
+                </div>
+                <RouterLink class="nav-link" to="/products"
+                  ><button class="btn btn-outline-primary w-100 mt-2 I-btn">
+                    前往商品
+                  </button></RouterLink
+                >
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="card">
+              <img
+                src="https://i.imgur.com/BXzgojk.jpg"
+                style="width: auto; height: 300px"
+                class="card-img-top object-cover"
                 alt="product-image"
               />
               <div class="card-body">
@@ -151,8 +185,9 @@
           <swiper-slide>
             <div class="card">
               <img
-                src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
-                class="card-img-top"
+                src="https://i.imgur.com/bo1RQ4f.jpg"
+                class="card-img-top object-cover"
+                style="width: auto; height: 300px"
                 alt="product-image"
               />
               <div class="card-body">
@@ -174,17 +209,18 @@
           <swiper-slide>
             <div class="card">
               <img
-                src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
-                class="card-img-top"
+                src="https://i.imgur.com/Fre24RA.jpg"
+                class="card-img-top object-cover"
                 alt="product-image"
+                style="width: auto; height: 300px"
               />
               <div class="card-body">
-                <h6 class="card-title">大漂亮</h6>
+                <h6 class="card-title">小漂亮</h6>
                 <div
                   class="card-text d-flex justify-content-between align-items-center"
                 >
-                  <del>NT 1399 元</del>
-                  <strong class="text-danger">NT 999元</strong>
+                  <del>NT 1199 元</del>
+                  <strong class="text-danger">NT 799元</strong>
                 </div>
                 <RouterLink class="nav-link" to="/products"
                   ><button class="btn btn-outline-primary w-100 mt-2 I-btn">
@@ -197,17 +233,18 @@
           <swiper-slide>
             <div class="card">
               <img
-                src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676484277483.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=LGt6CRZe00SsaAx%2FYJAsXqo65x7N4xg%2Bhdm%2BAcIijOsjycqYSQUJeT67JqZ%2FDSTXcaLUbXUCroaw%2BTvPYSMBgx5lH4aTHA%2BX6VSBawOkRomp68Z5oRpGJVtZmBrA9lszddaTVowQgzaHE7%2FhWOafDDOaqmR%2BmgFex0wnDaHSfAHZUXRk%2BaKjteig6pqipUw0LYfnLIDph6p995vwmcgbMi9b1I0Jz7opsmxf9xT2vHBOgkYTghAA7AALWzY6%2FDGDB7t6mpkCqP%2BzUYzcjb4MFNYS6qt732NndQY3nM4HACl9c9YSbwEWiDY4o6nbDRaTU1wzJxiq1HDL06KBDiYavw%3D%3D"
-                class="card-img-top"
+                src="https://i.imgur.com/jbebBTZ.jpg"
+                class="card-img-top object-cover"
                 alt="product-image"
+                style="width: auto; height: 300px"
               />
               <div class="card-body">
-                <h6 class="card-title">大漂亮</h6>
+                <h6 class="card-title">小可愛</h6>
                 <div
                   class="card-text d-flex justify-content-between align-items-center"
                 >
-                  <del>NT 1399 元</del>
-                  <strong class="text-danger">NT 999元</strong>
+                  <del>NT 1299 元</del>
+                  <strong class="text-danger">NT 899元</strong>
                 </div>
                 <RouterLink class="nav-link" to="/products"
                   ><button class="btn btn-outline-primary w-100 mt-2 I-btn">
@@ -221,7 +258,7 @@
       </div>
     </div>
   </div>
-<div>
+  <div>
     <div class="about bg-warning d-flex justify-content-center p-5 mb-5">
       <div class="card mb-3">
         <div class="row g-4">
@@ -294,8 +331,9 @@ h2 {
 
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 // Import Swiper styles
+import all from "../../assets/all.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -309,6 +347,11 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+  },
+  setup() {
+    return {
+      modules: [Autoplay, Pagination, Navigation],
+    };
   },
 };
 </script>

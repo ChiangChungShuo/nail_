@@ -36,6 +36,10 @@ const router = createRouter({
           component: () => import("../views/front/NewsView.vue"),
         },
         {
+          path: "new",
+          component: () => import("../views/front/NewView.vue"),
+        },
+        {
           path: "question",
           component: () => import("../views/front/QuestionView.vue"),
         },

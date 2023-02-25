@@ -35,7 +35,12 @@
                 v-for="(image, index) in product.imagesUrl"
                 :key="index"
               >
-                <img :src="image" style="width: 100%; height: 200px" alt="" />
+                <img
+                  :src="image"
+                  class="object-cover"
+                  style="width: 100%; height: 200px"
+                  alt=""
+                />
               </div>
             </div>
           </div>

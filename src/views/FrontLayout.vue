@@ -5,7 +5,6 @@
         ><img
           src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676496643032.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=BnWQM8NuRPfUhK9%2FZBEtS%2BS4hOHGy32xLLD4Jx2O4mG5iZJVypjqmppQTOLVl7%2BXu441eNorIWgF9SJ90G9yxSAbj%2BmCKWFC1oHN2SKAzB8RpcAUtNXTRj8YV7cLtw2Kq7R%2FKAFLhdd6kb%2B7EvxqivdagIvxtyf6kK8vzN0kEWIb3dTMD63uxTNPEdH3qFnf9IFYjUmfTuFqlVie22ToeOdxQ0BanJemzHAEJgm%2BxnISvz0fepNzOKCaYnMhaDoYF6pc9RTNZDJ%2FUpAzzikxNL%2BIE3diPT%2BSVvaJ8vQWkbyPOReiLTPx6BFVXR15CPOf4VOx6QQkA1RVdetktOj05w%3D%3D"
           alt=""
-          class="d-inline-block"
           width="60"
         />
         <span class="h6 mx-3" style="color: #4e6752"
@@ -38,7 +37,7 @@
           <RouterLink class="nav-link" to="/favourite"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
-              width="19"
+              width="17"
               height="19"
               fill="currentColor"
               class="bi bi-heart-fill"
@@ -57,12 +56,13 @@
                 height="20"
                 fill="currentColor"
                 class="bi bi-cart-fill"
-                viewBox="0 0 16 16"
+                viewBox="0 0 16 18"
               >
                 <path
                   d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                 />
               </svg>
+              <span class="badge rounded-pill text-bg-danger">{{}}</span>
             </RouterLink>
           </div>
         </div>
@@ -72,7 +72,8 @@
   <div class="banner">
     <div class="imgbox">
       <img
-        src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676658066691.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=n%2FMqclm0fo8XLDD%2BqlGxifQDkZmYS%2BtvagAcKztML5CkOR%2FEpLefvh%2BCeq%2FLxIIzzZkyS%2FQzQmwXVmq5AI7w0nnV%2BrDs4j7qrvuLetasyDLYCy323TggNPZf0vq7rfISQmxJMUuh1woippKBnyCoB0EcVH31pmItqwZMjcejKPpFK%2BVuCoKYKg4VmmVUdP4sF3qZIjUEsEFPG6de1ZBaeBmudJsqReOKj6bdwQMu5AWADM55OedxoDrM7f5Uqzonccvd8mS66H87KYoT2x80%2BbFBD86C6JFLBBuXG8yPsJn0L30YpFOPLO2Kc%2B%2F8yzIl33mr%2FJibqpW9Vr%2BSwC%2BT3g%3D%3D"
+        src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1677247880410.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=mlcs%2Bmi2wY2OpSRki01K30JDk79SjmG%2BVSmKaLAx2aqe2RTWYm3R2FZfKRHGrBV7ughEE372XgM1784oHztHVfo64A%2F8xowfEwQaoBQUAzh4DfQBQ5hQ7oIcTEA7hWKtOuaXvRqunZHyo%2Fln58lLpv1TUf%2F66nHWV7YaCxLrCIzoS%2Bf7aYMQr2oZ0Jj4IsCpgkbpuOM99hVjq%2Fw4UWGmOOi%2FtPTnZNBukEKMKVsOVr7v%2BMli9l4qP2SgR5ib6R65AKa4H6T5Gja4T%2FtVJ8i%2B%2BYNbRTZiio%2Bj3HD8m8rc%2BsRG16WZ7zUrSzJABVOKv8nwx2TUpaR17YopLwLloG5X6w%3D%3D"
+        class="object-cover"
       />
       <h2>你今天，美甲了嗎？</h2>
     </div>
@@ -81,7 +82,7 @@
     <RouterView />
   </main>
   <div class="container">
-    <div class="contact">
+    <div class="contact mb-4">
       <div class="row flex-wrap g-4">
         <div class="col-md-4">
           <a class="navbar-brand" href="#"
@@ -190,11 +191,11 @@ export default {
   opacity: 0.9; /*设置透明度*/
 }
 .banner h2 {
-  transform: translate(5%, 80%);
+  transform: translate(14%, 80%);
   font-size: 40px;
   color: #27612f;
   position: absolute;
-  background-color: rgba(244, 251, 251, 0.512);
-  width: 370px;
+  background-color: rgba(244, 251, 250, 0.512);
+  width: 360px;
 }
 </style>

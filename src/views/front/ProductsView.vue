@@ -9,18 +9,31 @@
     <div class="row mt-5">
       <div class="col-md-2">
         <div class="list-group">
-          <a
+          <!-- <a
             href="#"
             class="list-group-item list-group-item-action active"
             aria-current="true"
           >
             所有款式
           </a>
-          <a href="#" class="list-group-item list-group-item-action">單色</a>
+          <a class="list-group-item list-group-item-action" @click="getCategory('單色')">單色</a>
           <a href="#" class="list-group-item list-group-item-action">跳色</a>
           <a href="#" class="list-group-item list-group-item-action">漸層</a>
           <a href="#" class="list-group-item list-group-item-action">暈染</a>
-          <a href="#" class="list-group-item list-group-item-action">指定款</a>
+          <a href="#" class="list-group-item list-group-item-action">指定款</a> -->
+          <a
+            class="list-group-item list-group-item-action"
+            @click="getProducts()"
+          >
+            所有款式
+          </a>
+          <a
+            class="list-group-item list-group-item-action"
+            @click="getCategory(category)"
+            v-for="category in categorys"
+            :key="category"
+            >{{ category }}</a
+          >
         </div>
       </div>
       <div class="col-md-10">
@@ -38,8 +51,8 @@
               >
                 <img
                   :src="product.imageUrl"
-                  class="card-img-top"
-                  style="width: 100%; height: 350px"
+                  class="card-img-top object-cover"
+                  style="height: 350px"
                 />
                 <span>詳細資訊</span>
               </router-link>
@@ -75,6 +88,7 @@
 import { RouterLink } from "vue-router";
 import Swal from "sweetalert2";
 import PaginationComponent from "../../components/Pagination.vue";
+import all from "../../assets/all.scss";
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   data() {
@@ -82,6 +96,9 @@ export default {
       isLoading: false,
       products: [],
       pagination: {},
+      data: [],
+      result: [],
+      categorys: ["單色", "跳色", "漸層", "暈染", "指定款"],
     };
   },
   components: {
@@ -89,17 +106,38 @@ export default {
     PaginationComponent,
   },
   methods: {
-    getProducts(page = 1) {
-      this.$http
-        .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?page=${page}`)
-        .then((res) => {
-          console.log(res);
-          this.products = res.data.products;
-          this.pagination = res.data.pagination;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+    // getProduct() {
+    //   this.$http
+    //     .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products`)
+    //     .then((res) => {
+    //       console.log(res);
+    //       this.products = res.data.products;
+    //       this.pagination = res.data.pagination;
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //     });
+    // },
+    getProducts(page = 2) {
+      for (let i = 1; i <= page; i++) {
+        this.$http
+          .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?page=` + i)
+          .then((res) => {
+            console.log(res);
+            this.products = res.data.products;
+            this.pagination = res.data.pagination;
+            this.data = this.data.concat(res.data.products);
+            console.log(this.data);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    },
+    getCategory(name) {
+      this.result = this.data.filter((res) => res.category === name);
+      console.log(this.result);
+      this.products = this.result;
     },
     addToCart(id) {
       const data = {
@@ -137,7 +175,6 @@ export default {
 
 <style>
 .products-img {
-  /* background-image: url('https://storage.googleapis.com/vue-course-api.appspot.com/annavue/1675490570956.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=cWTHw4e5Kr6%2BquA825d0CNCjsWCeGHLPdtBF45Kjx0EAPhtJY%2BRc4sJtNNDwKN%2FuUDBvcuWSK9HMHzGkGN2aBgn%2FL3fk13pXEp%2FMw1024kLMgjuU2%2BSdFPNSzxsCQ1UpM%2F99JNEC5OLRlI3OxYdrfg2glxWiGgc9zaDaxbcGcEzin5zeZSC4ZlGmc236%2FPwAXlnP62Dc%2FKlBFgr1jsGT%2FZsTpVKqcd6dfytcNFqLSMI%2FToZvoZf%2Fz4NM7warq%2FFIZivDDumNUuwqtihImK3U0a%2FbpRv75Y3%2BYISCzHinKSuORWOdAQ16zv9uzghjqQmLmnjesj8rECKr35XUiCFSyg%3D%3D'); */
   background-position: center 70%;
   background-repeat: no-repeat;
   background-size: cover;

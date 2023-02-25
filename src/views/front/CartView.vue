@@ -2,7 +2,7 @@
   <VueLoading v-model:active="isLoading"></VueLoading>
   <div class="container">
     <div class="row">
-      <ol class="list mt-5">
+      <ol class="list my-5">
         <li class="active">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,11 +55,11 @@
     <p style="font-size: 30px" class="my-5">購物車內還沒有商品，快去選購吧！</p>
   </div>
   <div class="container" v-else>
-    <div class="row">
-      <div class="col col-md-12">
-        <div class="text-end">
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div class="text-end my-3">
           <button
-            class="btn btn-outline-danger mt-5"
+            class="btn btn-outline-danger"
             type="button"
             :disabled="!cartStatus"
             @click="deleteAll()"
@@ -67,16 +67,13 @@
             清空購物車
           </button>
         </div>
-        <table
-          class="table align-middle my-5"
-          style="border-style: solid; border-width: 10px"
-        >
+        <table class="table align-middle">
           <thead>
             <tr>
               <th></th>
               <th>圖片</th>
               <th>品名</th>
-              <th style="width: 50px">數量/單位</th>
+              <th style="width: 150px">數量/單位</th>
               <th class="text-end">單價</th>
               <th class="text-end">小計</th>
             </tr>
@@ -95,7 +92,14 @@
                     x
                   </button>
                 </td>
-                <td><img :src="item.product.imageUrl" width="80" alt="" /></td>
+                <td>
+                  <img
+                    style="width: 100px; height: 100px"
+                    :src="item.product.imageUrl"
+                    alt=""
+                    class="object-cover"
+                  />
+                </td>
                 <td>{{ item.product.title }}</td>
                 <td>
                   <div class="input-group input-group-sm">
@@ -113,25 +117,78 @@
                     </select>
                   </div>
                 </td>
-                <td class="text-end">
-                  {{ item.product.price }}
-                </td>
-                <td class="text-end">{{ item.total }}</td>
+                <td class="text-end">NT${{ item.product.price }}</td>
+                <td class="text-end">NT${{ item.total }}</td>
               </tr>
             </template>
           </tbody>
           <tfoot>
             <tr>
               <td colspan="5" class="text-end">總計</td>
-              <td class="text-end">{{ cart.total }}</td>
+              <td class="text-end">NT${{ cart.total }}</td>
             </tr>
           </tfoot>
         </table>
-        <div class="text-end">
-          <router-link class="btn btn-outline-primary" to="/subscriber"
-            >下一步</router-link
-          >
+      </div>
+      <div class="col-md-6 my-5">
+        <div class="card rounded-0" style="border-color: #4e6752">
+          <div class="card-header border-bottom-0 bg-white px-4 py-4">
+            <h3>訂單詳情</h3>
+          </div>
+          <div class="card-body mt-3 px-4 py-0">
+            <ul
+              class="list-group list-group-flush"
+              v-for="item in cart.carts"
+              :key="item.id"
+            >
+              <li
+                class="list-group-item px-0"
+                style="border-bottom-color: #4e6752; border-bottom-width: 1px"
+              >
+                <div class="d-flex mt-2">
+                  <img
+                    :src="item.product.imageUrl"
+                    class="me-2"
+                    style="width: 60px; height: 60px; object-fit: cover"
+                  />
+                  <div class="w-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between fw-bold">
+                      <h5>{{ item.product.title }}</h5>
+                      <p class="mb-0">X{{ item.qty }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between mt-auto">
+                      <p class="text-muted mb-0">
+                        <small>NT$ {{ item.product.price }}</small>
+                      </p>
+                      <p class="mb-0">NT${{ item.total }}</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <li class="list-group-item px-0 pb-0">
+              <table class="table text-muted">
+                <tbody>
+                  <tr>
+                    <h3 style="color: #0a0a0a">總價</h3>
+                    <td
+                      class="text-end border-0 px-0"
+                      style="font-size: 25px; color: #4e6752"
+                    >
+                      NT$ {{ cart.total }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+          </div>
         </div>
+      </div>
+
+      <div class="text-end">
+        <router-link class="btn btn-outline-primary" to="/subscriber"
+          >下一步</router-link
+        >
       </div>
     </div>
   </div>
@@ -184,7 +241,7 @@ export default {
       this.$http
         .put(`${VITE_APP_URL}/api/${VITE_APP_PATH}/cart/${item.id}`, { data }) //購物車ID
         .then((res) => {
-          // console.log("更新購物車", res.data);
+          console.log("更新購物車", res.data);
           this.getCarts();
           Swal.fire({
             position: "center",

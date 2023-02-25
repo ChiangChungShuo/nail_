@@ -10,11 +10,15 @@
       <h1 style="text-align: center; font-size: 50px" class="my-4">常見問題</h1>
       <div>
         <swiper
-          :slides-per-view="1"
-          :space-between="50"
+          :spaceBetween="30"
+          :centeredSlides="true"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
+          :navigation="true"
           :modules="modules"
-          navigation
-          :pagination="{ clickable: true }"
+          class="mySwiper"
         >
           <swiper-slide>
             <div class="card mb-3">
@@ -323,11 +327,11 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, Navigation, Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default {
   data() {
@@ -339,9 +343,13 @@ export default {
     Swiper,
     SwiperSlide,
   },
+  setup() {
+    return {
+      modules: [Autoplay, Pagination, Navigation],
+    };
+  },
 };
 </script>
-
 
 <style scoped>
 .swiper {
