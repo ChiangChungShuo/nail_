@@ -2,7 +2,7 @@
   <div class="container my-5">
     <h2 class="d-flex justify-content-center mb-4">最新消息</h2>
     <div class="row">
-      <div class="col-12 col-md-4 mb-3 ">
+      <div class="col-12 col-md-4 mb-3">
         <div class="card">
           <img
             style="height: 300px"
@@ -311,6 +311,37 @@
   </div>
 </template>
 
+<script>
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, Navigation, Pagination } from "swiper";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
+// Import Swiper styles
+import all from "../../assets/all.scss";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+export default {
+  data() {
+    return {
+      modules: [Navigation, Pagination],
+      isLoading: false,
+    };
+  },
+  components: {
+    Swiper,
+    SwiperSlide,
+    Loading,
+  },
+  setup() {
+    return {
+      modules: [Autoplay, Pagination, Navigation],
+    };
+  },
+  mounted() {},
+};
+</script>
 <style>
 h2 {
   font-size: 40px;
@@ -328,30 +359,3 @@ h2 {
   object-fit: cover;
 }
 </style>
-
-<script>
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay, Navigation, Pagination } from "swiper";
-// Import Swiper styles
-import all from "../../assets/all.scss";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-export default {
-  data() {
-    return {
-      modules: [Navigation, Pagination],
-    };
-  },
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-  setup() {
-    return {
-      modules: [Autoplay, Pagination, Navigation],
-    };
-  },
-};
-</script>

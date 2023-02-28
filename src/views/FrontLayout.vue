@@ -35,34 +35,14 @@
           <RouterLink class="nav-link" to="/admin">後台</RouterLink>
           <RouterLink class="nav-link" to="/login">登入後台</RouterLink>
           <RouterLink class="nav-link" to="/favourite"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="17"
-              height="19"
-              fill="currentColor"
-              class="bi bi-heart-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-              /></svg
+            ><i class="bi bi-heart-fill"></i
           ></RouterLink>
           <div>
             <RouterLink class="nav-link" to="/cart"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="bi bi-cart-fill"
-                viewBox="0 0 16 18"
-              >
-                <path
-                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                />
-              </svg>
-              <span class="badge rounded-pill text-bg-danger">{{}}</span>
+              ><i class="bi bi-cart-fill"></i>
+              <span class="badge badge-pill rounded-pill bg-danger">{{
+                carts.length
+              }}</span>
             </RouterLink>
           </div>
         </div>
@@ -153,7 +133,8 @@
 <script>
 import { RouterView } from "vue-router";
 import { Navigation, Pagination } from "swiper";
-
+import { mapState, mapActions } from "pinia";
+import cartsStore from "../stores/cart.js";
 export default {
   name: "my-component",
   data() {
@@ -163,6 +144,15 @@ export default {
   },
   components: {
     RouterView,
+  },
+  computed: {
+    ...mapState(cartsStore, ["carts"]),
+  },
+  methods: {
+    ...mapActions(cartsStore, ["getCart"]),
+  },
+  mounted() {
+    this.getCart();
   },
 };
 </script>
@@ -191,7 +181,7 @@ export default {
   opacity: 0.9; /*设置透明度*/
 }
 .banner h2 {
-  transform: translate(14%, 80%);
+  transform: translate(5%, 80%);
   font-size: 40px;
   color: #27612f;
   position: absolute;

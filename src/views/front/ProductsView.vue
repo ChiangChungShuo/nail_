@@ -8,39 +8,28 @@
     </nav>
     <div class="row mt-5">
       <div class="col-md-2">
-        <div class="list-group">
-          <!-- <a
-            href="#"
-            class="list-group-item list-group-item-action active"
-            aria-current="true"
-          >
-            所有款式
-          </a>
-          <a class="list-group-item list-group-item-action" @click="getCategory('單色')">單色</a>
-          <a href="#" class="list-group-item list-group-item-action">跳色</a>
-          <a href="#" class="list-group-item list-group-item-action">漸層</a>
-          <a href="#" class="list-group-item list-group-item-action">暈染</a>
-          <a href="#" class="list-group-item list-group-item-action">指定款</a> -->
+        <div class="list-group" v-for="category in categorys" :key="category">
           <a
             class="list-group-item list-group-item-action"
-            @click="getProducts()"
-          >
-            所有款式
-          </a>
-          <a
-            class="list-group-item list-group-item-action"
-            @click="getCategory(category)"
-            v-for="category in categorys"
-            :key="category"
+            style="border: 0"
+            :class="{ active: isActive === category }"
+            @click.prevent="isActive = category"
             >{{ category }}</a
           >
         </div>
       </div>
       <div class="col-md-10">
         <div class="row g-4">
+          <loading
+            v-model:active="isLoading"
+            :can-cancel="true"
+            :color="color"
+            :on-cancel="onCancel"
+            :is-full-page="fullPage"
+          />
           <div
             class="col-md-4 col-sm-6"
-            v-for="product in products"
+            v-for="product in productsFiltered"
             :key="product.id"
           >
             <div class="card">
@@ -74,10 +63,10 @@
               </div>
             </div>
           </div>
-          <pagination-component
-            :pages="pagination"
-            @go-to-page="getProducts"
-          ></pagination-component>
+          <PaginationModal
+            :pages="page"
+            @change-page="getProducts"
+          ></PaginationModal>
         </div>
       </div>
     </div>
@@ -87,7 +76,11 @@
 <script>
 import { RouterLink } from "vue-router";
 import Swal from "sweetalert2";
-import PaginationComponent from "../../components/Pagination.vue";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
+import PaginationModal from "../../components/PaginationModal.vue";
+import cartStore from "../../stores/cart.js";
+import { mapActions, mapState } from "pinia";
 import all from "../../assets/all.scss";
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
@@ -95,60 +88,39 @@ export default {
     return {
       isLoading: false,
       products: [],
-      pagination: {},
-      data: [],
-      result: [],
-      categorys: ["單色", "跳色", "漸層", "暈染", "指定款"],
+      page: {},
+      categorys: ["所有樣式", "單色", "跳色", "漸層", "暈染", "指定款"],
+      isActive: "所有樣式",
     };
   },
   components: {
     RouterLink,
-    PaginationComponent,
+    PaginationModal,
+    Loading,
   },
+
   methods: {
-    // getProduct() {
-    //   this.$http
-    //     .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products`)
-    //     .then((res) => {
-    //       console.log(res);
-    //       this.products = res.data.products;
-    //       this.pagination = res.data.pagination;
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // },
-    getProducts(page = 2) {
-      for (let i = 1; i <= page; i++) {
-        this.$http
-          .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?page=` + i)
-          .then((res) => {
-            console.log(res);
-            this.products = res.data.products;
-            this.pagination = res.data.pagination;
-            this.data = this.data.concat(res.data.products);
-            console.log(this.data);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      }
+    getProducts(page = 1) {
+      this.$http
+        .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/products?page=${page}`)
+        .then((res) => {
+          this.products = res.data.products;
+          this.isLoading = false;
+          this.page = res.data.pagination;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
-    getCategory(name) {
-      this.result = this.data.filter((res) => res.category === name);
-      console.log(this.result);
-      this.products = this.result;
-    },
-    addToCart(id) {
+    addToCart(product_id, qty = 1) {
       const data = {
-        product_id: id,
-        qty: 1,
+        product_id,
+        qty,
       };
       this.$http
         .post(`${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`, { data })
         .then((res) => {
-          console.log(res);
-          // alert(res.data.message);
+          alert(res.data.message);
           Swal.fire({
             position: "center",
             icon: "success",
@@ -162,12 +134,23 @@ export default {
           console.error(err);
         });
     },
+    ...mapActions(cartStore, ["addToCart"]),
+  },
+
+  computed: {
+    // 篩選商品分類
+    productsFiltered() {
+      if (this.isActive === "所有樣式") {
+        return this.products;
+      }
+      return this.products.filter((item) => item.category === this.isActive);
+    },
   },
   mounted() {
     this.getProducts();
     this.isLoading = true;
     setTimeout(() => {
-      this.isLoading = false;
+      this.getProducts();
     }, 1000);
   },
 };
@@ -226,5 +209,30 @@ export default {
 }
 .products-img:hover:after {
   opacity: 1;
+}
+.starred-icon {
+  opacity: 0;
+}
+
+input.ui-checkbox {
+  height: 0;
+  width: 0;
+}
+
+.ui-checkbox:checked + .starred-icon {
+  opacity: 1;
+}
+
+.starred-icon,
+.unstarred-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.material-icons {
+  color: #3f5d45;
+  user-select: none;
 }
 </style>

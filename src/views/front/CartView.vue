@@ -198,7 +198,6 @@
 import progress from "../../assets/progress.css";
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 import Swal from "sweetalert2";
-import axios from "axios";
 export default {
   data() {
     return {
@@ -206,12 +205,14 @@ export default {
       productId: "",
       //購物車
       cart: {},
+      cartNum: 1,
       cartStatus: false,
       isLoading: false,
       //操作完成才能在操作下一個動作
       loadingItem: "", //存id
     };
   },
+
   methods: {
     //取得購物車資料
     getCarts() {
@@ -241,7 +242,7 @@ export default {
       this.$http
         .put(`${VITE_APP_URL}/api/${VITE_APP_PATH}/cart/${item.id}`, { data }) //購物車ID
         .then((res) => {
-          console.log("更新購物車", res.data);
+          // console.log("更新購物車", res.data);
           this.getCarts();
           Swal.fire({
             position: "center",
@@ -285,7 +286,7 @@ export default {
         denyButtonText: "取消",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios
+          this.$http
             .delete(`${VITE_APP_URL}/api/${VITE_APP_PATH}/carts`)
             .then(() => {
               this.getCarts();

@@ -1,6 +1,6 @@
 import { createApp } from "vue"; //來自於套件
 import { createPinia } from "pinia";
-import Loading from "vue-loading-overlay";
+import {Loading} from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 import axios from "axios";
 import VueAxios from "vue-axios";
@@ -35,6 +35,9 @@ configure({
 setLocale("zh_TW");
 const app = createApp(App);
 const pinia = createPinia();
+app.use(Loading, {
+  color: "#FF0000",
+});
 app.component("VForm", Form);
 app.component("VField", Field);
 app.component("ErrorMessage", ErrorMessage);

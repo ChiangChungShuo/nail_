@@ -2,23 +2,7 @@
   <VueLoading v-model:active="isLoading"></VueLoading>
   <div class="container my-5">
     <div class="row">
-      <div class="col-md-2">
-        <div class="list-group">
-          <a
-            href="#"
-            class="list-group-item list-group-item-action active"
-            aria-current="true"
-          >
-            所有款式
-          </a>
-          <a href="#" class="list-group-item list-group-item-action">單色</a>
-          <a href="#" class="list-group-item list-group-item-action">跳色</a>
-          <a href="#" class="list-group-item list-group-item-action">漸層</a>
-          <a href="#" class="list-group-item list-group-item-action">暈染</a>
-          <a href="#" class="list-group-item list-group-item-action">指定款</a>
-        </div>
-      </div>
-      <div class="col-md-10">
+      <div class="col-md-12">
         <div class="row">
           <h1 class="d-flex justify-content-center my-4">
             {{ product.title }}
@@ -27,7 +11,7 @@
             <img
               :src="product.imageUrl"
               style="width: 100%; height: 450px"
-              class="img-fluid"
+              class="img-fluid object-cover"
             />
             <div class="row mt-3">
               <div
@@ -115,6 +99,8 @@
 
 <script>
 import Swal from "sweetalert2";
+import cartStore from "../../stores/cart.js";
+import { mapActions, mapState } from "pinia";
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   data() {
@@ -126,11 +112,9 @@ export default {
   methods: {
     gteProduct() {
       //取得ID
-      console.log("$route", this.$route); //屬性
+      // console.log("$route", this.$route); //屬性
       const { id } = this.$route.params;
-      console.log(id);
-
-      console.log("router", this.$router); //方法
+      // console.log("router", this.$router); //方法
       // this.$router.push('/');
       this.$http
         .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/product/${id}`)
@@ -141,16 +125,18 @@ export default {
           console.error(err);
         });
     },
-    addToCart(id) {
+    addToCart(product_id, qty = 1) {
       const data = {
-        product_id: id,
-        qty: 1,
+        data: {
+          product_id,
+          qty,
+        },
       };
       this.$http
         .post(`${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`, { data })
         .then((res) => {
-          console.log(res);
-          // alert(res.data.message);
+          // console.log(res);
+          alert(res.data.message);
           Swal.fire({
             position: "center",
             icon: "success",
@@ -164,6 +150,7 @@ export default {
           console.error(err);
         });
     },
+    ...mapActions(cartStore, ["addToCart"]),
   },
   mounted() {
     this.gteProduct();
