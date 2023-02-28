@@ -72,8 +72,8 @@
             <tr>
               <th></th>
               <th>圖片</th>
-              <th>品名</th>
-              <th style="width: 150px">數量/單位</th>
+              <th style="width: 150px">品名</th>
+              <th class="text-align">數量</th>
               <th class="text-end">單價</th>
               <th class="text-end">小計</th>
             </tr>
@@ -94,7 +94,7 @@
                 </td>
                 <td>
                   <img
-                    style="width: 100px; height: 100px"
+                    style="width: 50px; height: 50px"
                     :src="item.product.imageUrl"
                     alt=""
                     class="object-cover"
@@ -106,7 +106,8 @@
                     <select
                       name=""
                       id=""
-                      class="form-select"
+                      class="text-center"
+                      style="width: 48px"
                       v-model="item.qty"
                       :disabled="item.id === loadingItem"
                       @change="updatedCartItem(item)"
