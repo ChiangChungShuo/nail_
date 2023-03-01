@@ -8,7 +8,7 @@ export default {
   components: {
     RouterView,
   },
-  mounted() {},
+  methods: {},
 };
 </script>
 

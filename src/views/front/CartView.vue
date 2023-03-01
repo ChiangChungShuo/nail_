@@ -206,7 +206,6 @@ export default {
       productId: "",
       //購物車
       cart: {},
-      cartNum: 1,
       cartStatus: false,
       isLoading: false,
       //操作完成才能在操作下一個動作

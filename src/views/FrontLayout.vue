@@ -119,6 +119,9 @@
           />
         </div>
       </div>
+      <button class="scroll-to-top" @click="scrollToTop">
+        <img src="https://i.imgur.com/hOTAIBu.png" alt="" />
+      </button>
     </div>
   </div>
   <footer class="footer py-2 bg-primary">
@@ -150,6 +153,13 @@ export default {
   },
   methods: {
     ...mapActions(cartsStore, ["getCart"]),
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    },
   },
   mounted() {
     this.getCart();
@@ -187,5 +197,14 @@ export default {
   position: absolute;
   background-color: rgba(244, 251, 250, 0.512);
   width: 360px;
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+.scroll-to-top img {
+  width: 30px;
 }
 </style>
