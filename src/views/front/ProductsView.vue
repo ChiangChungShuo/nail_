@@ -52,7 +52,6 @@
                   <br />
                   {{ product.content }}
                 </p>
-
                 <button
                   type="button"
                   class="btn btn-danger mt-auto fs-6 w-100"
@@ -82,7 +81,6 @@ import PaginationModal from "../../components/PaginationModal.vue";
 import cartStore from "../../stores/cart.js";
 import { mapActions, mapState } from "pinia";
 import all from "../../assets/all.scss";
-import Favourites from "./FavouriteView.vue";
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 export default {
   data() {

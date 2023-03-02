@@ -58,7 +58,10 @@
       </div>
     </div>
   </div>
-  <div class="about bg-warning d-flex justify-content-center p-5 mb-5">
+  <div
+    class="about bg-warning d-flex justify-content-center p-5 mb-5"
+    data-aos="fade-left"
+  >
     <div class="card mb-3" style="max-width: 1200px">
       <div class="row g-4">
         <div class="col-md-4">
@@ -258,53 +261,53 @@
       </div>
     </div>
   </div>
-  <div>
-    <div class="about bg-warning d-flex justify-content-center p-5 mb-5">
-      <div class="card mb-3">
-        <div class="row g-4">
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5
-                class="card-title"
-                style="color: #4e6752; font-weight: 600; font-size: 40px"
-              >
-                Morizanko 預約須知
-              </h5>
-              <p
-                class="card-text"
-                style="font-weight: 400; font-size: 20px; line-height: 45px"
-              >
-                ⚠️
-                施作過程中可能會有小狀況發生及剪甘皮的受傷風險，會小心及避免。
-                <br />
-                🕰 施作時間約需保留2-3小時，須耐久坐。（如需卸甲，則時間另計）
-                <br />
-                🌱首次預約時會請您先傳一下手部照片「指甲長度須超過指甲肉」
-                <br />
-                「如有崁甲、灰指甲、咬甲」先去把指甲的健康照顧好，再預約變美美喔
-                <br />
-                🤎如有事須更改時間或取消預約，請於「預約日期三天前」通知。
-                <br />
+  <div
+    class="about bg-warning d-flex justify-content-center p-5 mb-5"
+    data-aos="fade-right"
+  >
+    <div class="card mb-3">
+      <div class="row g-4">
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5
+              class="card-title"
+              style="color: #4e6752; font-weight: 600; font-size: 40px"
+            >
+              Morizanko 預約須知
+            </h5>
+            <p
+              class="card-text"
+              style="font-weight: 400; font-size: 20px; line-height: 45px"
+            >
+              ⚠️ 施作過程中可能會有小狀況發生及剪甘皮的受傷風險，會小心及避免。
+              <br />
+              🕰 施作時間約需保留2-3小時，須耐久坐。（如需卸甲，則時間另計）
+              <br />
+              🌱首次預約時會請您先傳一下手部照片「指甲長度須超過指甲肉」
+              <br />
+              「如有崁甲、灰指甲、咬甲」先去把指甲的健康照顧好，再預約變美美喔
+              <br />
+              🤎如有事須更改時間或取消預約，請於「預約日期三天前」通知。
+              <br />
+            </p>
+            <div class="d-flex justify-content-between">
+              <p style="font-weight: 400; font-size: 25px">
+                🧡預約詢問請私訊官方Line
               </p>
-              <div class="d-flex justify-content-between">
-                <p style="font-weight: 400; font-size: 25px">
-                  🧡預約詢問請私訊官方Line
-                </p>
-                <RouterLink class="nav-link" to="/reserve">
-                  <button class="btn btn-primary text-nowrap">
-                    查看更多
-                  </button></RouterLink
-                >
-              </div>
+              <RouterLink class="nav-link" to="/reserve">
+                <button class="btn btn-primary text-nowrap">
+                  查看更多
+                </button></RouterLink
+              >
             </div>
           </div>
-          <div class="col-md-4">
-            <img
-              src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676603236410.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Jq3QRBK0tEeUQ%2F7yPLrhMR6us7y%2FWqeUBA%2BSNPamkxtHLh2s200j10w2KVi0EFGtyYQYSsILe%2FeMVQ16D4qQ4MLdI2QT7D2o4fMAV39IbHgJG5YAOHpS0b8%2BgncqRqYHjBZ9jAWty5gIbraG4B1cWydKUDz%2FgUJMNT1CCxxvf5JTw%2FS6aX%2BI1Jqa3BAQ4iSdoRjHnKCA7kMwThQFR%2Fjq%2BIXAoRWyhMShlljq7kW7Xh%2FTyASxzWGsIRtJUpmx93M5fXfijeemrROcVQNHf9jTrM4KN5sRZbQSoaJsXxtZw2nRyVZjnTq%2B7SECJwG3x2%2Bcipp%2BJfoqirB7Jy7nbmgFcw%3D%3D"
-              class="img-fluid rounded-start"
-              alt="img"
-            />
-          </div>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676603236410.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Jq3QRBK0tEeUQ%2F7yPLrhMR6us7y%2FWqeUBA%2BSNPamkxtHLh2s200j10w2KVi0EFGtyYQYSsILe%2FeMVQ16D4qQ4MLdI2QT7D2o4fMAV39IbHgJG5YAOHpS0b8%2BgncqRqYHjBZ9jAWty5gIbraG4B1cWydKUDz%2FgUJMNT1CCxxvf5JTw%2FS6aX%2BI1Jqa3BAQ4iSdoRjHnKCA7kMwThQFR%2Fjq%2BIXAoRWyhMShlljq7kW7Xh%2FTyASxzWGsIRtJUpmx93M5fXfijeemrROcVQNHf9jTrM4KN5sRZbQSoaJsXxtZw2nRyVZjnTq%2B7SECJwG3x2%2Bcipp%2BJfoqirB7Jy7nbmgFcw%3D%3D"
+            class="img-fluid rounded-start"
+            alt="img"
+          />
         </div>
       </div>
     </div>

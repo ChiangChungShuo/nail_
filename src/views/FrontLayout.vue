@@ -163,6 +163,18 @@ export default {
   },
   mounted() {
     this.getCart();
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    // 獲取 Navbar 所有項目
+    const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+    // 設置所有項目的點擊事件
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        // 如果是手機板且 Navbar 是展開狀態，則收合 Navbar
+        if (isMobile && document.querySelector(".navbar-collapse.show")) {
+          document.querySelector(".navbar-toggler").click();
+        }
+      });
+    });
   },
 };
 </script>

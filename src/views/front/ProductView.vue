@@ -93,6 +93,52 @@
           返回產品列表
         </router-link>
       </div>
+      <div class="row">
+        <h3 style="text-align: center" class="my-4">相關產品</h3>
+        <div class="col-md-12">
+          <swiper
+            :spaceBetween="15"
+            :slides-per-view="2"
+            :centeredSlides="true"
+            :autoplay="{
+              delay: 2000,
+              disableOnInteraction: true,
+            }"
+            :navigation="true"
+            :modules="modules"
+            class="mySwiper"
+          >
+            <swiper-slide
+              v-for="(product, index) in similarProducts"
+              :key="index"
+            >
+              <div class="card">
+                <img
+                  :src="product.imageUrl"
+                  class="card-img-top object-cover"
+                  style="width: auto; height: 250px"
+                  alt="product-image"
+                />
+                <div class="card-body">
+                  <h6 class="card-title">{{ product.title }}</h6>
+                  <div
+                    class="card-text d-flex justify-content-between align-items-center"
+                  >
+                    <del>NT${{ product.origin_price }}</del>
+                    <strong class="text-danger">NT${{ product.price }}</strong>
+                  </div>
+                  <button
+                    class="btn btn-outline-primary w-100 mt-2 I-btn"
+                    @click="$router.push(`/product/${product.id}`)"
+                  >
+                    前往商品
+                  </button>
+                </div>
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -101,12 +147,20 @@
 import Swal from "sweetalert2";
 import cartStore from "../../stores/cart.js";
 import { mapActions, mapState } from "pinia";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, Navigation, Pagination } from "swiper";
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 export default {
   data() {
     return {
+      modules: [Navigation, Pagination],
       isLoading: false,
       product: {},
+      similarProducts: [],
     };
   },
   methods: {
@@ -119,7 +173,9 @@ export default {
       this.$http
         .get(`${VITE_APP_URL}/api/${VITE_APP_PATH}/product/${id}`)
         .then((res) => {
+          // console.log(res);
           this.product = res.data.product;
+          this.getCategoryProducts();
         })
         .catch((err) => {
           console.error(err);
@@ -136,7 +192,6 @@ export default {
         .post(`${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`, { data })
         .then((res) => {
           // console.log(res);
-          alert(res.data.message);
           Swal.fire({
             position: "center",
             icon: "success",
@@ -150,6 +205,19 @@ export default {
           console.error(err);
         });
     },
+    getCategoryProducts() {
+      const { category } = this.product;
+      this.$http
+        .get(
+          `${VITE_APP_URL}/api/${VITE_APP_PATH}/products?category=${category}`
+        )
+        .then((res) => {
+          this.similarProducts = res.data.products;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
     ...mapActions(cartStore, ["addToCart"]),
   },
   mounted() {
@@ -158,6 +226,34 @@ export default {
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);
+    this.$watch(
+      () => this.product,
+      () => {
+        this.getCategoryProducts();
+      }
+    );
+  },
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  setup() {
+    return {
+      modules: [Autoplay, Pagination, Navigation],
+    };
   },
 };
 </script>
+
+<style>
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
