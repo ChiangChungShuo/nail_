@@ -60,7 +60,7 @@
   </div>
   <div
     class="about bg-warning d-flex justify-content-center p-5 mb-5"
-    data-aos="fade-left"
+    data-aos="fade-down"
   >
     <div class="card mb-3" style="max-width: 1200px">
       <div class="row g-4">
@@ -75,7 +75,7 @@
           <div class="card-body">
             <h5
               class="card-title"
-              style="color: #4e6752; font-weight: 600; font-size: 40px"
+              style="color: #4e6752; font-weight: 600; font-size: 35px"
             >
               關於 Ｍorizanko - 冉冉森林
             </h5>
@@ -263,7 +263,7 @@
   </div>
   <div
     class="about bg-warning d-flex justify-content-center p-5 mb-5"
-    data-aos="fade-right"
+    data-aos="fade-down"
   >
     <div class="card mb-3">
       <div class="row g-4">
