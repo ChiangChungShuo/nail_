@@ -114,7 +114,7 @@
         <div class="col-md-4">
           <img
             style="max-width: 100%"
-            src="https://s3-alpha-sig.figma.com/img/41bf/86e6/c53833a8e5ef47ac5bc906e4e6feed9d?Expires=1677456000&Signature=phTQVKixRCca8R6xCIPlFpQw3GWHfUUu~5FA9Mjwhoy1uWshqrP7COTk7EqJ5EASVz6zjeMDo1-sasLUS549EEY4ZFMHmnYI7dgekov2G~JXLR3Gx4biTTUvMxrw2ha3YhCTEeUuTn8i2Aa2hSetlioeh8Ma8AWfTIxlWUmPSvzRbWSC~6xvoSMf8d5nJyB1tlHSoIaU7zlmlL3Q7Ch7HKPGhSLjJgwJnVOoAkC46CJF3V3UAYS4jZRMMN4-he72EAEc1oKoBqV7QLU4tR8A~4Ewpux20j9z5naECJCbd2Gmh6hkyC2sqBV57auYa0AXy0d1gHdFwLfFJsGYy2lcDQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+            src="https://i.imgur.com/hkiZo3R.png"
             alt=""
           />
         </div>
