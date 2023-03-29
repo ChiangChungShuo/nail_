@@ -3,14 +3,10 @@
     style="
       background-image: url('https://i.imgur.com/qaaw3a2.jpg');
       min-height: 95vh;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
       width: 100%;
       height: auto;
       background-size: cover;
-      background-position: center;
+      background-position: center top;
       filter: brightness(90%);
       background-attachment: fixed;
     "
@@ -45,11 +41,11 @@
     </div>
   </section>
   <div class="container my-5">
-    <div class="d-flex my-3">
+    <div class="d-flex my-3" data-aos="fade-up">
       <img src="https://i.imgur.com/Qd9SoEJ.jpg" alt="" />
       <h2 class="d-flex" style="align-items: center">最新消息</h2>
     </div>
-    <div class="row">
+    <div class="row" data-aos="fade-up">
       <div class="col-12 col-md-4 mb-3">
         <div class="card">
           <img
@@ -149,11 +145,11 @@
   </div>
   <div class="container">
     <div class="row my-5">
-      <div class="d-flex my-3">
+      <div class="d-flex my-3" data-aos="fade-up">
         <img src="https://i.imgur.com/Qd9SoEJ.jpg" alt="" />
         <h2 class="d-flex" style="align-items: center">熱門款式</h2>
       </div>
-      <div class="col-md-12 col-sm-8">
+      <div class="col-md-12 col-sm-8" data-aos="fade-up">
         <swiper
           :spaceBetween="20"
           :slides-per-view="3"
@@ -381,7 +377,6 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
-// Import Swiper styles
 import all from "../../assets/all.scss";
 import "swiper/css";
 import "swiper/css/navigation";
