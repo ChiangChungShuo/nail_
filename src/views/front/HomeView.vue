@@ -415,4 +415,13 @@ h2 {
   height: 100%;
   object-fit: cover;
 }
+@media (max-width: 767px) {
+  .landing-img {
+    background-image: url("https://i.imgur.com/PJJt1e0.jpg");
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+}
 </style>
