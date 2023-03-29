@@ -2,17 +2,26 @@
   <section
     style="
       background-image: url('https://i.imgur.com/qaaw3a2.jpg');
-      height: 100vh;
+      min-height: 95vh;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: auto;
       background-size: cover;
+      background-position: center;
+      filter: brightness(90%);
       background-attachment: fixed;
     "
-    class="d-flex align-items-center landing-img bg-attachment-fixed"
+    class="section-banner d-flex align-items-center landing-img bg-attachment-fixed"
   >
     <div class="container-lg">
       <div class="row">
         <div class="col-md-3">
           <div
             class="d-flex align-items-center justify-content-center position-relative"
+            data-aos="fade-up"
           >
             <h1
               style="border-right: 1px solid #ffffff66; z-index: 1"
@@ -20,7 +29,7 @@
             >
               美<br />甲<br />
             </h1>
-            <div style="z-index: 1" class="d-flex me-7">
+            <div style="z-index: 1" class="d-flex me-7" data-aos="fade-up">
               <h3 style="color: #dee6e4" class="mb-0 me-3 drop-shadow">
                 讓<br />你<br />的<br />指<br />尖<br />更<br />有<br />品<br />味
               </h3>
@@ -413,14 +422,5 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-@media (max-width: 767px) {
-  .landing-img {
-    background-image: url("https://i.imgur.com/PJJt1e0.jpg");
-    height: auto;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-  }
 }
 </style>
