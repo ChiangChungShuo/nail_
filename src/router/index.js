@@ -48,8 +48,8 @@ const router = createRouter({
           component: () => import("../views/front/LoginView.vue"),
         },
         {
-          path: "favourite",
-          component: () => import("../views/front/FavouriteView.vue"),
+          path: "collect",
+          component: () => import("../views/front/CollectView.vue"),
         },
         {
           path: "subscriber",

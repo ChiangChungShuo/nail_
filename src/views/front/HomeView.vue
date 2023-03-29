@@ -1,6 +1,46 @@
 <template>
+  <section
+    style="
+      background-image: url('https://i.imgur.com/PJJt1e0.jpg');
+      height: 100vh;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    "
+    class="d-flex align-items-center landing-img bg-attachment-fixed"
+  >
+    <div class="container-lg">
+      <div class="row">
+        <div class="col-md-3">
+          <div
+            class="d-flex align-items-center justify-content-center position-relative"
+          >
+            <h1
+              style="border-right: 1px solid #ffffff66; z-index: 1"
+              class="mb-0 me-6 py-3 pe-3 text-white fw-bold drop-shadow"
+            >
+              美<br />甲<br />
+            </h1>
+            <div style="z-index: 1" class="d-flex me-7">
+              <h3 style="color: #dee6e4" class="mb-0 me-3 drop-shadow">
+                讓<br />你<br />的<br />指<br />尖<br />更<br />有<br />品<br />味
+              </h3>
+            </div>
+            <h5 style="z-index: 1" class="m-0">
+              <router-link to="/products" class="btn btn-primary" href="#"
+                >探<br />索<br />美<br />麗</router-link
+              >
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <div class="container my-5">
-    <h2 class="d-flex justify-content-center mb-4">最新消息</h2>
+    <div class="d-flex my-3">
+      <img src="https://i.imgur.com/Qd9SoEJ.jpg" alt="" />
+      <h2 class="d-flex" style="align-items: center">最新消息</h2>
+    </div>
     <div class="row">
       <div class="col-12 col-md-4 mb-3">
         <div class="card">
@@ -69,19 +109,21 @@
             src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676585388198.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=TosivJb3LmGFvvIHDlGbsqFEj5b130YpcOF1AAQZzvdN0q7%2Bx9ivlHIpdbZx%2BMuybBisuH26wfGdf%2BeaN5NjPTW2yky8LxtQ3qkt7wLZxTfFzuTEMCXq6g6mLAbBbFVvu%2FGgVUKK2%2FKvfFzXLbiJx%2FR1H7Z7XwJ76L7a4rHRQKBJM3ZGhLicm8R72B%2Fmwv7nyWo4pHAWNR%2F0NwMFNQNsPjDJ46u0EjnI96XiuNqEItA2hpCHIhjVk5%2BQO72bXfwVvTE72QhoQeDiNAYDltyLlHg8UiN676WDVPEQFfhvvqjLMnjoBZO0PTAl9UtEBg9z4B7yafbcturcIAAHwPJAuA%3D%3D"
             class="img-fluid rounded-start"
             alt="img"
+            style="height: 440px"
           />
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5
+            <img src="https://i.imgur.com/Qd9SoEJ.jpg" alt="" />
+            <h2
               class="card-title"
-              style="color: #4e6752; font-weight: 600; font-size: 35px"
+              style="color: #4e6752; font-weight: 600; font-size: 40px"
             >
               關於 Ｍorizanko - 冉冉森林
-            </h5>
+            </h2>
             <p
               class="card-text"
-              style="font-weight: 400; font-size: 20px; line-height: 49px"
+              style="font-weight: 400; font-size: 20px; line-height: 40px"
             >
               mori來自日語的もり是森林的意思， zanko則是日語的殘光、餘暉。
               冉冉森林是希望帶給大家像森林般的變化萬千，
@@ -99,11 +141,14 @@
   </div>
   <div class="container">
     <div class="row my-5">
-      <h2 class="d-flex justify-content-center mb-4">熱門款式</h2>
+      <div class="d-flex my-3">
+        <img src="https://i.imgur.com/Qd9SoEJ.jpg" alt="" />
+        <h2 class="d-flex" style="align-items: center">熱門款式</h2>
+      </div>
       <div class="col-md-12 col-sm-8">
         <swiper
           :spaceBetween="20"
-          :slides-per-view="2"
+          :slides-per-view="3"
           :centeredSlides="true"
           :autoplay="{
             delay: 2500,
@@ -269,12 +314,20 @@
       <div class="row g-4">
         <div class="col-md-8">
           <div class="card-body">
-            <h5
-              class="card-title"
-              style="color: #4e6752; font-weight: 600; font-size: 40px"
-            >
-              Morizanko 預約須知
-            </h5>
+            <div class="d-sm-flex">
+              <img src="https://i.imgur.com/Qd9SoEJ.jpg" alt="" />
+              <h5
+                class="card-title"
+                style="
+                  color: #4e6752;
+                  font-weight: 600;
+                  font-size: 40px;
+                  align-items: center;
+                "
+              >
+                Morizanko<span class="d-flex">預約須知</span>
+              </h5>
+            </div>
             <p
               class="card-text"
               style="font-weight: 400; font-size: 20px; line-height: 45px"
@@ -307,6 +360,7 @@
             src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1676603236410.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Jq3QRBK0tEeUQ%2F7yPLrhMR6us7y%2FWqeUBA%2BSNPamkxtHLh2s200j10w2KVi0EFGtyYQYSsILe%2FeMVQ16D4qQ4MLdI2QT7D2o4fMAV39IbHgJG5YAOHpS0b8%2BgncqRqYHjBZ9jAWty5gIbraG4B1cWydKUDz%2FgUJMNT1CCxxvf5JTw%2FS6aX%2BI1Jqa3BAQ4iSdoRjHnKCA7kMwThQFR%2Fjq%2BIXAoRWyhMShlljq7kW7Xh%2FTyASxzWGsIRtJUpmx93M5fXfijeemrROcVQNHf9jTrM4KN5sRZbQSoaJsXxtZw2nRyVZjnTq%2B7SECJwG3x2%2Bcipp%2BJfoqirB7Jy7nbmgFcw%3D%3D"
             class="img-fluid rounded-start"
             alt="img"
+            style="height: 440px"
           />
         </div>
       </div>

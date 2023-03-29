@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="mt-3">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">首頁</a></li>
         <li class="breadcrumb-item active" aria-current="page">美甲款式</li>
@@ -9,17 +9,19 @@
     <div class="row mt-5">
       <div class="col-md-2">
         <div class="list-group" v-for="category in categorys" :key="category">
-          <a
+          <button
             class="list-group-item list-group-item-action"
             style="border: 0"
+            type="button"
             :class="{ active: isActive === category }"
             @click.prevent="isActive = category"
-            >{{ category }}</a
           >
+            {{ category }}
+          </button>
         </div>
       </div>
       <div class="col-md-10">
-        <div class="row g-4">
+        <div class="row g-4" style="width: 100%">
           <loading
             v-model:active="isLoading"
             :can-cancel="true"
@@ -52,13 +54,37 @@
                   <br />
                   {{ product.content }}
                 </p>
-                <button
-                  type="button"
-                  class="btn btn-danger mt-auto fs-6 w-100"
-                  @click="addToCart(product.id)"
-                >
-                  加入購物車
-                </button>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <button
+                      v-if="!isFav(product.id)"
+                      type="button"
+                      class="btn btn-outline-success"
+                      @click.prevent="() => addToCollect(product)"
+                    >
+                      <i class="bi bi-heart"></i>
+                      加入收藏
+                    </button>
+                    <button
+                      v-else
+                      type="button"
+                      class="btn btn-success"
+                      @click.prevent="() => removeCollect(product)"
+                    >
+                      <i class="bi bi-heart"></i>
+                      已收藏
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger"
+                      @click="addToCart(product.id)"
+                    >
+                      加入購物車
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -76,6 +102,7 @@
 import { RouterLink } from "vue-router";
 import Swal from "sweetalert2";
 import Loading from "vue-loading-overlay";
+import { collectStore } from "../../stores/collect";
 import "vue-loading-overlay/dist/css/index.css";
 import PaginationModal from "../../components/PaginationModal.vue";
 import cartStore from "../../stores/cart.js";
@@ -133,10 +160,19 @@ export default {
           console.error(err);
         });
     },
-    ...mapActions(cartStore, ["addToCart"]),
+    ...mapActions(cartStore, ["addToCart", "getCarts"]),
+    ...mapActions(collectStore, [
+      "addToCollect",
+      "getCollects",
+      "removeCollect",
+    ]),
   },
-
   computed: {
+    isFav() {
+      return (id) => {
+        return this.collects.filter((item) => item.id === id).length;
+      };
+    },
     // 篩選商品分類
     productsFiltered() {
       if (this.isActive === "所有樣式") {
@@ -144,8 +180,11 @@ export default {
       }
       return this.products.filter((item) => item.category === this.isActive);
     },
+    ...mapState(cartStore, ["state"]),
+    ...mapState(collectStore, ["collects"]),
   },
   mounted() {
+    this.getCollects();
     this.getProducts();
     this.isLoading = true;
     setTimeout(() => {
@@ -183,6 +222,14 @@ export default {
   font-size: 0.875rem;
   transition: all 0.3s ease-out;
   z-index: 2;
+}
+.products-img img {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.products-img:hover img {
+  transform: scale(1.1);
 }
 .products-img .span,
 .products-img span {

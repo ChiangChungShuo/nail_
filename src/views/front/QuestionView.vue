@@ -1,13 +1,18 @@
 <template>
   <div class="container">
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="mt-3">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">首頁</a></li>
         <li class="breadcrumb-item active" aria-current="page">常見問題</li>
       </ol>
     </nav>
     <div class="row">
-      <h1 style="text-align: center; font-size: 50px" class="my-4">常見問題</h1>
+      <h1
+        style="text-align: center; font-size: 50px; color: #4e6752"
+        class="my-4"
+      >
+        常見問題
+      </h1>
       <div>
         <swiper
           :spaceBetween="30"

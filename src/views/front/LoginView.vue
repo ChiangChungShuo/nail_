@@ -2,42 +2,41 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h1 style="font-size:50px;text-align: center" >morizanko後台</h1>
+        <h1 style="font-size: 50px; text-align: center">morizanko後台</h1>
         <form class="form-signin" @submit.prevent="login">
-    <!-- v-on 可用@縮寫 -->
-    <div class="form-floating mb-3">
-      <!-- v-model此處綁定user.username -->
-      <input
-        v-model="user.username"
-        type="email"
-        class="form-control"
-        id="username"
-        placeholder="name@example.com"
-        required
-        autofocus
-      />
-      <label for="username">Email address</label>
-    </div>
-    <div class="form-floating mb-3">
-      <!-- v-model 此處綁定user.password -->
-      <input
-        v-model="user.password"
-        type="password"
-        class="form-control"
-        id="password"
-        placeholder="Password"
-        required
-      />
-      <label for="password">Password</label>
-    </div>
-    <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
-      登入
-    </button>
-  </form>
+          <!-- v-on 可用@縮寫 -->
+          <div class="form-floating mb-3">
+            <!-- v-model此處綁定user.username -->
+            <input
+              v-model="user.username"
+              type="email"
+              class="form-control"
+              id="username"
+              placeholder="name@example.com"
+              required
+              autofocus
+            />
+            <label for="username">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <!-- v-model 此處綁定user.password -->
+            <input
+              v-model="user.password"
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              required
+            />
+            <label for="password">Password</label>
+          </div>
+          <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
+            登入
+          </button>
+        </form>
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -47,8 +46,8 @@ export default {
   data() {
     return {
       user: {
-        username: '',
-        password: '',
+        username: "",
+        password: "",
       },
     };
   },
@@ -65,7 +64,7 @@ export default {
           document.cookie = `azraelkToken=${token}; expires=${new Date(
             expired
           )};`; //儲存token
-          this.$router.push('/admin/products');
+          this.$router.push("/admin/products");
         })
         .catch((err) => {
           alert(err.data.massage);

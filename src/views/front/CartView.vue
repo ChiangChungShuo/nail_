@@ -185,7 +185,6 @@
           </div>
         </div>
       </div>
-
       <div class="text-end">
         <router-link class="btn btn-outline-primary" to="/subscriber"
           >下一步</router-link

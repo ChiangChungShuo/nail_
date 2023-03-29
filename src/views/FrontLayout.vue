@@ -33,8 +33,7 @@
           <RouterLink class="nav-link" to="/question">常見問題</RouterLink>
           <RouterLink class="nav-link" to="/about">聯絡我們</RouterLink>
           <RouterLink class="nav-link" to="/admin">後台</RouterLink>
-          <RouterLink class="nav-link" to="/login">登入後台</RouterLink>
-          <RouterLink class="nav-link" to="/favourite"
+          <RouterLink class="nav-link" to="/collect"
             ><i class="bi bi-heart-fill"></i
           ></RouterLink>
           <div>
@@ -49,20 +48,11 @@
       </div>
     </div>
   </nav>
-  <div class="banner">
-    <div class="imgbox">
-      <img
-        src="https://storage.googleapis.com/vue-course-api.appspot.com/azraelk/1677247880410.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=mlcs%2Bmi2wY2OpSRki01K30JDk79SjmG%2BVSmKaLAx2aqe2RTWYm3R2FZfKRHGrBV7ughEE372XgM1784oHztHVfo64A%2F8xowfEwQaoBQUAzh4DfQBQ5hQ7oIcTEA7hWKtOuaXvRqunZHyo%2Fln58lLpv1TUf%2F66nHWV7YaCxLrCIzoS%2Bf7aYMQr2oZ0Jj4IsCpgkbpuOM99hVjq%2Fw4UWGmOOi%2FtPTnZNBukEKMKVsOVr7v%2BMli9l4qP2SgR5ib6R65AKa4H6T5Gja4T%2FtVJ8i%2B%2BYNbRTZiio%2Bj3HD8m8rc%2BsRG16WZ7zUrSzJABVOKv8nwx2TUpaR17YopLwLloG5X6w%3D%3D"
-        class="object-cover"
-      />
-      <h2>你今天，美甲了嗎？</h2>
-    </div>
-  </div>
   <main style="min-height: calc(100vh - 40px)">
     <RouterView />
   </main>
   <div class="container">
-    <div class="contact mb-4">
+    <div class="contact my-5">
       <div class="row flex-wrap g-4">
         <div class="col-md-4">
           <a class="navbar-brand" href="#"
@@ -188,6 +178,7 @@ export default {
 .navbar-nav {
   color: #4e6752ed;
   font-weight: 400;
+  transition: 0.3s;
 }
 .navbar-nav :hover {
   background: #f0f4f1;
@@ -218,5 +209,24 @@ export default {
 }
 .scroll-to-top img {
   width: 30px;
+}
+.nav-link {
+  position: relative;
+}
+
+.nav-link:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: #4e6752ed;
+  transition: width 0.6s ease;
+}
+
+.nav-link:hover:before {
+  width: 100%;
+  left: 0;
 }
 </style>

@@ -1,12 +1,17 @@
 <template>
   <div class="container">
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="mt-3">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">首頁</a></li>
         <li class="breadcrumb-item active" aria-current="page">最新消息</li>
       </ol>
     </nav>
-    <h1 style="font-size: 50px; text-align: center" class="my-4">最新消息</h1>
+    <h1
+      style="font-size: 50px; text-align: center; color: #4e6752"
+      class="my-4"
+    >
+      最新消息
+    </h1>
     <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
@@ -20,7 +25,7 @@
         <div class="col-md-8 p-4">
           <div class="card-body d-flex justify-content-between">
             <h5 class="card-title">聖誕優惠</h5>
-            <P>2023/02/13</P>
+            <p>2023/02/13</p>
           </div>
           <div
             class="card-body d-flex justify-content-between"
@@ -34,21 +39,13 @@
             <router-link to="/new">
               <button
                 type="button
-                "
+"
                 style="width: 90px; height: 35px"
                 class="btn btn-primary mt-5"
               >
                 了解詳情
               </button></router-link
             >
-          </div>
-
-          <div style="text-align: center">
-            <p class="card-text mt-3">
-              <small class="text-muted"
-                >🧡預約詢問請私訊官方Line @285fyfqx</small
-              >
-            </p>
           </div>
         </div>
       </div>
@@ -79,22 +76,13 @@
             </p>
             <router-link to="/new">
               <button
-                type="button
-                "
+                type="button"
                 style="width: 90px; height: 35px"
                 class="btn btn-primary mt-5"
               >
                 了解詳情
               </button></router-link
             >
-          </div>
-
-          <div style="text-align: center">
-            <p class="card-text mt-3">
-              <small class="text-muted"
-                >🧡預約詢問請私訊官方Line @285fyfqx</small
-              >
-            </p>
           </div>
         </div>
       </div>
@@ -125,22 +113,13 @@
             </p>
             <router-link to="/new">
               <button
-                type="button
-                "
+                type="button"
                 style="width: 90px; height: 35px"
                 class="btn btn-primary mt-5"
               >
                 了解詳情
               </button></router-link
             >
-          </div>
-
-          <div style="text-align: center">
-            <p class="card-text mt-3">
-              <small class="text-muted"
-                >🧡預約詢問請私訊官方Line @285fyfqx</small
-              >
-            </p>
           </div>
         </div>
       </div>
