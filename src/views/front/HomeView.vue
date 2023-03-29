@@ -1,9 +1,8 @@
 <template>
   <section
     style="
-      background-image: url('https://i.imgur.com/PJJt1e0.jpg');
+      background-image: url('https://i.imgur.com/qaaw3a2.jpg');
       height: 100vh;
-      background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed;
     "
