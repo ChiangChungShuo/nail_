@@ -8,10 +8,14 @@
     </nav>
     <div class="row mt-5">
       <div class="col-md-2">
-        <div class="list-group" v-for="category in categorys" :key="category">
+        <div
+          class="list-group"
+          v-for="category in categorys"
+          :key="category"
+
+        >
           <button
             class="list-group-item list-group-item-action"
-            style="border: 0"
             type="button"
             :class="{ active: isActive === category }"
             @click.prevent="isActive = category"
@@ -24,17 +28,21 @@
         <div class="row g-4" style="width: 100%">
           <loading
             v-model:active="isLoading"
-            :can-cancel="true"
+            :can-cancel="false"
             :color="color"
             :on-cancel="onCancel"
             :is-full-page="fullPage"
-          />
+          >
+            <template #default>
+              <img src="../../assets/loading.gif" alt="Loading..." />
+            </template>
+          </loading>
           <div
             class="col-md-4 col-sm-6"
             v-for="product in productsFiltered"
             :key="product.id"
           >
-            <div class="card">
+            <div class="card" style="border: 0.5px solid #3f5d45">
               <router-link
                 class="products-img"
                 role="button"
@@ -102,8 +110,8 @@
 import { RouterLink } from "vue-router";
 import Swal from "sweetalert2";
 import Loading from "vue-loading-overlay";
-import { collectStore } from "../../stores/collect";
 import "vue-loading-overlay/dist/css/index.css";
+import { collectStore } from "../../stores/collect";
 import PaginationModal from "../../components/PaginationModal.vue";
 import cartStore from "../../stores/cart.js";
 import { mapActions, mapState } from "pinia";
@@ -146,12 +154,13 @@ export default {
       this.$http
         .post(`${VITE_APP_URL}/api/${VITE_APP_PATH}/cart`, { data })
         .then((res) => {
-          alert(res.data.message);
+          // alert(res.data.message);
           Swal.fire({
             position: "center",
             icon: "success",
             title: "成功加入購物車",
             showConfirmButton: true,
+            confirmButtonColor: "#7C9C81",
             confirmButtonText: "確認",
           });
           // this.products = res.data.products;
@@ -187,9 +196,6 @@ export default {
     this.getCollects();
     this.getProducts();
     this.isLoading = true;
-    setTimeout(() => {
-      this.getProducts();
-    }, 1000);
   },
 };
 </script>
@@ -268,7 +274,6 @@ input.ui-checkbox {
 .ui-checkbox:checked + .starred-icon {
   opacity: 1;
 }
-
 .starred-icon,
 .unstarred-icon {
   position: absolute;

@@ -32,7 +32,6 @@
           <RouterLink class="nav-link" to="/products">美甲款式</RouterLink>
           <RouterLink class="nav-link" to="/question">常見問題</RouterLink>
           <RouterLink class="nav-link" to="/about">聯絡我們</RouterLink>
-          <RouterLink class="nav-link" to="/admin">後台</RouterLink>
           <RouterLink class="nav-link" to="/collect"
             ><i class="bi bi-heart-fill"></i
           ></RouterLink>
@@ -68,6 +67,7 @@
           >
           <div class="d-flex mx-3 mt-5">
             <h6>更多關於Morizanko</h6>
+            <RouterLink class="nav-link" to="/admin">後台</RouterLink>
             <a href="https://line.me/R/ti/p/@285fyfqx">
               <img
                 class="mx-4"
@@ -213,7 +213,6 @@ export default {
 .nav-link {
   position: relative;
 }
-
 .nav-link:before {
   content: "";
   position: absolute;
@@ -224,7 +223,6 @@ export default {
   background-color: #4e6752ed;
   transition: width 0.6s ease;
 }
-
 .nav-link:hover:before {
   width: 100%;
   left: 0;

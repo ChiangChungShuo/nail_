@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row">
-          <h1 class="d-flex justify-content-center my-4">
+          <h1 class="d-flex justify-content-center my-4" style="color: #4e6752">
             {{ product.title }}
           </h1>
           <div class="col-md-4 col-sm-6">
@@ -40,6 +40,7 @@
                 現在只要{{ product.price }} 元
               </div>
             </div>
+            <div></div>
             <div>
               <h2
                 class="card-title mt-4"
@@ -65,8 +66,7 @@
                 🧡預約詢問請私訊官方Line @285fyfqx
               </p>
             </div>
-
-            <div class="input-group mt-3">
+            <div class="input-group mt-3 input-group-custom">
               <input
                 type="number"
                 class="form-control"
@@ -99,7 +99,7 @@
           <swiper
             :spaceBetween="15"
             :slides-per-view="2"
-            :centeredSlides="true"
+            :centeredSlides="false"
             :autoplay="{
               delay: 2000,
               disableOnInteraction: true,
@@ -196,6 +196,7 @@ export default {
             position: "center",
             icon: "success",
             title: "成功加入購物車",
+            confirmButtonColor: "#3085d6",
             showConfirmButton: true,
             confirmButtonText: "確認",
           });

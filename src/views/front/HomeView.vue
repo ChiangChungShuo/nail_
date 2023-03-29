@@ -1,4 +1,15 @@
 <template>
+  <loading
+    v-model:active="isLoading"
+    :can-cancel="false"
+    :color="color"
+    :on-cancel="onCancel"
+    :is-full-page="fullPage"
+  >
+    <template #default>
+      <img src="../../assets/loading.gif" alt="Loading..." />
+    </template>
+  </loading>
   <section
     style="
       background-image: url('https://i.imgur.com/qaaw3a2.jpg');
@@ -55,12 +66,24 @@
             alt="img"
           />
           <div class="card-body">
-            <h5 class="card-title">聖誕優惠</h5>
-            <del>指定款NT$1399</del>
-            <p class="card-text">聖誕優惠價NT$999</p>
-            <router-link class="btn btn-primary" to="/news"
-              >活動詳情</router-link
-            >
+            <div class="d-flex justify-content-between">
+              <div>
+                <h5 class="card-title">聖誕節優惠</h5>
+                <p
+                  class="fs-7 py-1 px-1 my-1 bg-danger text-white rounded-1"
+                  style="width: 75px"
+                >
+                  聖誕優惠
+                </p>
+                <p class="card-text">聖誕優惠價NT$999</p>
+              </div>
+              <router-link
+                class="btn btn-primary activity-details-btn"
+                style="height: 40px; align-items: end"
+                to="/news"
+                >活動詳情</router-link
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -73,12 +96,24 @@
             alt="img"
           />
           <div class="card-body">
-            <h5 class="card-title">IG打卡優惠</h5>
-            <span>分享優惠</span>
-            <p class="card-text">分享限時動態享有8折優惠</p>
-            <router-link class="btn btn-primary" to="/news"
-              >活動詳情</router-link
-            >
+            <div class="d-flex justify-content-between">
+              <div>
+                <h5 class="card-title">IG打卡優惠</h5>
+                <p
+                  class="fs-7 py-1 px-1 my-1 bg-danger text-white rounded-1"
+                  style="width: 75px"
+                >
+                  分享優惠
+                </p>
+                <p class="card-text">分享限時動態享有8折優惠</p>
+              </div>
+              <router-link
+                class="btn btn-primary activity-details-btn"
+                style="height: 40px; align-items: end"
+                to="/news"
+                >活動詳情</router-link
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -91,12 +126,24 @@
             alt="img"
           />
           <div class="card-body">
-            <h5 class="card-title">生日優惠</h5>
-            <span>當月壽星優惠</span>
-            <p class="card-text">當月壽星8折優惠</p>
-            <router-link class="btn btn-primary" to="/news"
-              >活動詳情</router-link
-            >
+            <div class="d-flex justify-content-between">
+              <div>
+                <h5 class="card-title">生日優惠</h5>
+                <p
+                  class="fs-7 py-1 px-1 my-1 bg-danger text-white rounded-1"
+                  style="width: 75px"
+                >
+                  壽星優惠
+                </p>
+                <p class="card-text">當月壽星8折優惠</p>
+              </div>
+              <router-link
+                class="btn btn-primary activity-details-btn"
+                style="height: 40px; align-items: end"
+                to="/news"
+                >活動詳情</router-link
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -153,12 +200,14 @@
         <swiper
           :spaceBetween="20"
           :slides-per-view="3"
-          :centeredSlides="true"
+          :centeredSlides="false"
           :autoplay="{
             delay: 2500,
             disableOnInteraction: true,
           }"
           :navigation="true"
+          :slidesOffsetBefore="0"
+          :slidesOffsetAfter="0"
           :modules="modules"
           class="mySwiper"
         >
@@ -399,7 +448,12 @@ export default {
       modules: [Autoplay, Pagination, Navigation],
     };
   },
-  mounted() {},
+  mounted() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
+  },
 };
 </script>
 <style>
@@ -417,5 +471,10 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.activity-details-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
 }
 </style>

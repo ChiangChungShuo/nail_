@@ -48,6 +48,60 @@
           完成訂單
         </li>
       </ol>
+      <div class="col-md-6 my-5">
+        <div class="card rounded-0" style="border-color: #4e6752">
+          <div class="card-header border-bottom-0 bg-white px-4 py-4">
+            <h3>訂單詳情</h3>
+          </div>
+          <div class="card-body mt-3 px-4 py-0">
+            <ul
+              class="list-group list-group-flush"
+              v-for="item in cart.carts"
+              :key="item.id"
+            >
+              <li
+                class="list-group-item px-0"
+                style="border-bottom-color: #4e6752; border-bottom-width: 1px"
+              >
+                <div class="d-flex mt-2">
+                  <img
+                    :src="item.product.imageUrl"
+                    class="me-2"
+                    style="width: 60px; height: 60px; object-fit: cover"
+                  />
+                  <div class="w-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between fw-bold">
+                      <h5>{{ item.product.title }}</h5>
+                      <p class="mb-0">X{{ item.qty }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between mt-auto">
+                      <p class="text-muted mb-0">
+                        <small>NT$ {{ item.product.price }}</small>
+                      </p>
+                      <p class="mb-0">NT${{ item.total }}</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <li class="list-group-item px-0 pb-0">
+              <table class="table text-muted">
+                <tbody>
+                  <tr>
+                    <h3 style="color: #0a0a0a">總價</h3>
+                    <td
+                      class="text-end border-0 px-0"
+                      style="font-size: 25px; color: #4e6752"
+                    >
+                      NT$ {{ cart.total }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+          </div>
+        </div>
+      </div>
       <v-form
         ref="form"
         class="col-md-6 mt-5"

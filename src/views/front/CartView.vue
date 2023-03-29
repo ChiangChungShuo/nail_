@@ -1,5 +1,15 @@
 <template>
-  <VueLoading v-model:active="isLoading"></VueLoading>
+  <loading
+    v-model:active="isLoading"
+    :can-cancel="false"
+    :color="color"
+    :on-cancel="onCancel"
+    :is-full-page="fullPage"
+  >
+    <template #default>
+      <img src="../../assets/loading.gif" alt="Loading..." />
+    </template>
+  </loading>
   <div class="container">
     <div class="row">
       <ol class="list my-5">
@@ -53,10 +63,11 @@
   </div>
   <div class="text-center" v-if="!cartStatus">
     <p style="font-size: 30px" class="my-5">購物車內還沒有商品，快去選購吧！</p>
+    <router-link class="btn btn-primary" to="/products">美甲款式</router-link>
   </div>
   <div class="container" v-else>
     <div class="row mt-5">
-      <div class="col-md-6">
+      <div class="col12">
         <div class="text-end my-3">
           <button
             class="btn btn-outline-danger"
@@ -67,122 +78,48 @@
             清空購物車
           </button>
         </div>
-        <table class="table align-middle">
-          <thead>
-            <tr>
-              <th></th>
-              <th>圖片</th>
-              <th style="width: 150px">品名</th>
-              <th class="text-align">數量</th>
-              <th class="text-end">單價</th>
-              <th class="text-end">小計</th>
-            </tr>
-          </thead>
-          <tbody>
-            <template v-if="cart.carts">
-              <tr v-for="item in cart.carts" :key="item.id">
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-danger btn-sm"
-                    :disabled="item.id === loadingItem"
-                    @click="delCartItem(item)"
-                  >
-                    <i class="fas fa-spinner fa-pulse"></i>
-                    x
-                  </button>
-                </td>
-                <td>
-                  <img
-                    style="width: 50px; height: 50px"
-                    :src="item.product.imageUrl"
-                    alt=""
-                    class="object-cover"
-                  />
-                </td>
-                <td>{{ item.product.title }}</td>
-                <td>
-                  <div class="input-group input-group-sm">
-                    <select
-                      name=""
-                      id=""
-                      class="text-center"
-                      style="width: 48px"
-                      v-model="item.qty"
-                      :disabled="item.id === loadingItem"
-                      @change="updatedCartItem(item)"
-                    >
-                      <option :value="i" v-for="i in 20" :key="`${i}+'12345'`">
-                        {{ i }}
-                      </option>
-                    </select>
-                  </div>
-                </td>
-                <td class="text-end">NT${{ item.product.price }}</td>
-                <td class="text-end">NT${{ item.total }}</td>
-              </tr>
-            </template>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="5" class="text-end">總計</td>
-              <td class="text-end">NT${{ cart.total }}</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-      <div class="col-md-6 my-5">
-        <div class="card rounded-0" style="border-color: #4e6752">
-          <div class="card-header border-bottom-0 bg-white px-4 py-4">
-            <h3>訂單詳情</h3>
-          </div>
-          <div class="card-body mt-3 px-4 py-0">
-            <ul
-              class="list-group list-group-flush"
-              v-for="item in cart.carts"
-              :key="item.id"
-            >
-              <li
-                class="list-group-item px-0"
-                style="border-bottom-color: #4e6752; border-bottom-width: 1px"
-              >
-                <div class="d-flex mt-2">
-                  <img
-                    :src="item.product.imageUrl"
-                    class="me-2"
-                    style="width: 60px; height: 60px; object-fit: cover"
-                  />
-                  <div class="w-100 d-flex flex-column">
-                    <div class="d-flex justify-content-between fw-bold">
-                      <h5>{{ item.product.title }}</h5>
-                      <p class="mb-0">X{{ item.qty }}</p>
-                    </div>
-                    <div class="d-flex justify-content-between mt-auto">
-                      <p class="text-muted mb-0">
-                        <small>NT$ {{ item.product.price }}</small>
+        <ul v-if="cart.carts">
+          <template v-for="item in cart.carts" :key="item.id">
+            <li class="product-item row align-items-center gx-4 border-bottom mb-6 pb-6">
+              <div class="col overflow-hidden">
+                <img :src="item.product.imageUrl" :alt="item.product.title" class="object-cover w-100" style="max-height: 150px" />
+              </div>
+              <div class="col-8">
+                <h4 class="fs-7 fs-md-5 mb-2">{{ item.product.title }}</h4>
+                <p class="fs-8 fs-md-7 mb-1 text-truncate-2 text-neutral-700">{{ item.product.description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- 價格 -->
+                  <div>
+                    <p v-if="item.product.origin_price === item.product.price" class="text-primary fs-md-6">
+                      <span class="fs-9 fs-md-8">NT$ </span>{{ item.product.price }}
+                    </p>
+                    <p v-else class="text-primary fs-md-6">
+                      <span class="fs-9 fs-md-8">NT$ </span>{{ item.product.price }}
+                      <p class="fs-9 fs-md-8">
+                        <span class="text-neutral-500">NT$ </span>{{ item.total }}
                       </p>
-                      <p class="mb-0">NT${{ item.total }}</p>
-                    </div>
+                    </p>
                   </div>
                 </div>
-              </li>
-            </ul>
-            <li class="list-group-item px-0 pb-0">
-              <table class="table text-muted">
-                <tbody>
-                  <tr>
-                    <h3 style="color: #0a0a0a">總價</h3>
-                    <td
-                      class="text-end border-0 px-0"
-                      style="font-size: 25px; color: #4e6752"
-                    >
-                      NT$ {{ cart.total }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              </div>
+              <div class="col d-flex justify-content-end align-items-center">
+                <div class="input-group input-group-sm">
+                  <select name="" id="" class="text-center" style="width: 48px" v-model="item.qty" :disabled="item.id === loadingItem" @change="updatedCartItem(item)">
+                    <option :value="i" v-for="i in 20" :key="`${i}+'12345'`">{{ i }}</option>
+                  </select>
+                  <button type="button" class="btn btn-outline-danger btn-sm" :disabled="item.id === loadingItem" @click="delCartItem(item)">
+                    <i class="fas fa-spinner fa-pulse"></i> 刪除
+                  </button>
+                </div>
+              </div>
             </li>
-          </div>
+          </template>
+        </ul>
+        <div v-if="cart.total === cart.final_total" class="text-end">
+          <p class="fs-6 fw-bold">
+            總計:
+            <span>NT$ {{ cart.total }}</span>
+          </p>
         </div>
       </div>
       <div class="text-end">
@@ -196,22 +133,27 @@
 
 <script>
 import progress from "../../assets/progress.css";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env;
 import Swal from "sweetalert2";
 export default {
   data() {
     return {
+      isLoading: false,
+      fullPage: true,
       products: [],
       productId: "",
       //購物車
       cart: {},
       cartStatus: false,
-      isLoading: false,
       //操作完成才能在操作下一個動作
       loadingItem: "", //存id
     };
   },
-
+  components: {
+    Loading,
+  },
   methods: {
     //取得購物車資料
     getCarts() {
@@ -220,6 +162,7 @@ export default {
         .then((res) => {
           // console.log("購物車", res.data);
           this.cart = res.data.data;
+          this.isLoading = false;
           if (this.cart.carts.length === 0) {
             this.cartStatus = false;
           } else {
@@ -268,6 +211,7 @@ export default {
             position: "center",
             icon: "success",
             title: "成功刪除",
+            confirmButtonColor: "#3085d6",
             showConfirmButton: true,
             confirmButtonText: "確認",
           });
@@ -310,9 +254,6 @@ export default {
   mounted() {
     this.getCarts();
     this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
   },
 };
 </script>

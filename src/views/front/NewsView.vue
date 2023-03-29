@@ -38,9 +38,8 @@
             </p>
             <router-link to="/new">
               <button
-                type="button
-"
-                style="width: 90px; height: 35px"
+                type="button"
+                style="width: 100px; height: 35px"
                 class="btn btn-primary mt-5"
               >
                 了解詳情
