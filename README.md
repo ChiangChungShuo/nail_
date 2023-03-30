@@ -1,3 +1,4 @@
 Morizanko_Nails
 ===
-![](https://i.imgur.com/H8xpyuo.jpg)
+[![Morizanko]]
+![Morizanko](https://i.imgur.com/H8xpyuo.jpg)
