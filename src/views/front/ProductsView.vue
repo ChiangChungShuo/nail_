@@ -8,17 +8,17 @@
     </nav>
     <div class="row mt-5">
       <div class="col-md-2">
-        <div
-          class="list-group"
-          v-for="category in categorys"
-          :key="category"
-
-        >
+        <div class="list-group" v-for="category in categorys" :key="category">
           <button
             class="list-group-item list-group-item-action"
             type="button"
             :class="{ active: isActive === category }"
-            @click.prevent="isActive = category"
+            @click.prevent="
+              () => {
+                isActive = category;
+                filterProducts(category);
+              }
+            "
           >
             {{ category }}
           </button>
@@ -39,7 +39,7 @@
           </loading>
           <div
             class="col-md-4 col-sm-6"
-            v-for="product in productsFiltered"
+            v-for="product in filteredProducts"
             :key="product.id"
           >
             <div class="card" style="border: 0.5px solid #3f5d45">
@@ -96,10 +96,23 @@
               </div>
             </div>
           </div>
-          <PaginationModal
-            :pages="page"
-            @change-page="getProducts"
-          ></PaginationModal>
+          <!-- Show original pagination for all products -->
+          <template v-if="isActive === '所有樣式'">
+            <PaginationModal
+              :pages="page"
+              @change-page="getProducts"
+            ></PaginationModal>
+          </template>
+
+          <!-- Show filtered pagination for filtered products -->
+          <template v-else>
+            <template v-if="filteredPages > 1">
+              <PaginationModal
+                :pages="filteredPages"
+                @change-page="getProducts"
+              ></PaginationModal>
+            </template>
+          </template>
         </div>
       </div>
     </div>
@@ -122,6 +135,7 @@ export default {
     return {
       isLoading: false,
       products: [],
+      filteredProducts: 0,
       page: {},
       categorys: ["所有樣式", "單色", "跳色", "漸層", "暈染", "指定款"],
       isActive: "所有樣式",
@@ -141,6 +155,7 @@ export default {
           this.products = res.data.products;
           this.isLoading = false;
           this.page = res.data.pagination;
+          this.filterProducts(this.isActive);
         })
         .catch((err) => {
           console.error(err);
@@ -168,6 +183,17 @@ export default {
         .catch((err) => {
           console.error(err);
         });
+    },
+    filterProducts(category) {
+      if (category === "所有樣式") {
+        this.filteredProducts = this.products;
+        this.filteredPages = this.page.total_pages;
+      } else {
+        this.filteredProducts = this.products.filter(
+          (item) => item.category === category
+        );
+        this.filteredPages = Math.ceil(this.filteredProducts.length / 12);
+      }
     },
     ...mapActions(cartStore, ["addToCart", "getCarts"]),
     ...mapActions(collectStore, [
