@@ -14,7 +14,12 @@
     </div>
   </div>
   <div v-else class="container my-3 min-body-heigh">
-    <h1 style="text-align: center; color: #4e6752">美美收藏❤️</h1>
+    <h1
+      style="text-align: center; font-size: 50px; color: #4e6752"
+      class="my-5"
+    >
+      美美收藏❤️
+    </h1>
     <div class="row">
       <div
         class="col-lg-4 col-md-6 mb-3"

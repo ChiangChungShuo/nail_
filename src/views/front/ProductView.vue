@@ -144,6 +144,7 @@
 </template>
 
 <script>
+import { RouterLink } from "vue-router";
 import Swal from "sweetalert2";
 import cartStore from "../../stores/cart.js";
 import { mapActions, mapState } from "pinia";
@@ -237,6 +238,7 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    RouterLink,
   },
   setup() {
     return {

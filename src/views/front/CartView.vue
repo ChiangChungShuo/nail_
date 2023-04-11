@@ -80,34 +80,66 @@
         </div>
         <ul v-if="cart.carts">
           <template v-for="item in cart.carts" :key="item.id">
-            <li class="product-item row align-items-center gx-4 border-bottom mb-6 pb-6">
+            <li
+              class="product-item row align-items-center gx-4 border-bottom mb-6 pb-6"
+            >
               <div class="col overflow-hidden">
-                <img :src="item.product.imageUrl" :alt="item.product.title" class="object-cover w-100" style="max-height: 150px" />
+                <img
+                  :src="item.product.imageUrl"
+                  :alt="item.product.title"
+                  class="object-cover w-100"
+                  style="max-height: 150px"
+                />
               </div>
               <div class="col-8">
                 <h4 class="fs-7 fs-md-5 mb-2">{{ item.product.title }}</h4>
-                <p class="fs-8 fs-md-7 mb-1 text-truncate-2 text-neutral-700">{{ item.product.description }}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <!-- 價格 -->
-                  <div>
-                    <p v-if="item.product.origin_price === item.product.price" class="text-primary fs-md-6">
-                      <span class="fs-9 fs-md-8">NT$ </span>{{ item.product.price }}
-                    </p>
-                    <p v-else class="text-primary fs-md-6">
-                      <span class="fs-9 fs-md-8">NT$ </span>{{ item.product.price }}
-                      <p class="fs-9 fs-md-8">
-                        <span class="text-neutral-500">NT$ </span>{{ item.total }}
+                <p class="fs-8 fs-md-7 mb-1 text-truncate-2 text-neutral-700">
+                  {{ item.product.description }}
+                </p>
+                <div>
+                  <p
+                    v-if="item.product.origin_price === item.product.price"
+                    class="text-primary fs-md-6"
+                  ></p>
+                  <div v-else class="d-flex justify-content-between">
+                    <div>
+                      <p class="text-primary fs-md-6 my-3">
+                        <span class="fs-9 fs-md-8">單價NT$ </span
+                        >{{ item.product.price }}
                       </p>
-                    </p>
+                    </div>
+                    <div>
+                      <p class="text-primary fs-md-6 my-3">
+                        <span class="fs-9 fs-md-8">總價NT$ </span
+                        >{{ item.total }}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="col d-flex justify-content-end align-items-center">
-                <div class="input-group input-group-sm">
-                  <select name="" id="" class="text-center" style="width: 48px" v-model="item.qty" :disabled="item.id === loadingItem" @change="updatedCartItem(item)">
-                    <option :value="i" v-for="i in 20" :key="`${i}+'12345'`">{{ i }}</option>
+                <div
+                  class="input-group input-group-sm d-flex justify-content-end"
+                >
+                  <select
+                    name=""
+                    id=""
+                    class="text-center"
+                    style="width: 48px"
+                    v-model="item.qty"
+                    :disabled="item.id === loadingItem"
+                    @change="updatedCartItem(item)"
+                  >
+                    <option :value="i" v-for="i in 20" :key="`${i}+'12345'`">
+                      {{ i }}
+                    </option>
                   </select>
-                  <button type="button" class="btn btn-outline-danger btn-sm" :disabled="item.id === loadingItem" @click="delCartItem(item)">
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger btn-sm"
+                    :disabled="item.id === loadingItem"
+                    @click="delCartItem(item)"
+                  >
                     <i class="fas fa-spinner fa-pulse"></i> 刪除
                   </button>
                 </div>
