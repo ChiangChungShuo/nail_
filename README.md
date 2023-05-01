@@ -5,7 +5,7 @@
 ---
 以女友經營的美甲工作室發想所製作的網站 <br><br>
 Demo:[Morizanko_Nails](https://chiangchungshuo.github.io/nail_/#/) <br><br>
-其他連結:[Wireframe](https://whimsical.com/WXk5okBKj9t1SpXAr7SYkH#)、<br><br>
+其他連結:[Wireframe](https://whimsical.com/WXk5okBKj9t1SpXAr7SYkH#)<br><br>
 
 使用技術
 ---
